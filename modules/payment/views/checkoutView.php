@@ -99,7 +99,7 @@
                                 <li>Total: <span id="total-price" data-total-price="<?=number_format($price_and_quantity['ukupna_cena_korpe'] + $vat, 2, '.', '');?>"><?=number_format($price_and_quantity['ukupna_cena_korpe'] + $vat, 2, '.', '');?> €</span></li>
                            
                             <?php if($discount) {?>
-                                <li>Total with discount <?=$discount_percent?>%: <span id="total-price" data-total-price="<?=$finish_price?>"><?=$finish_price?> €</span></li>
+                                <li>Total with discount <?=$discount_percent?>%: <span id="total-price-discount" data-total-price="<?=$finish_price?>"><?=$finish_price?> €</span></li>
                                 <input type="hidden" name="discount_indicator"  value="1" />  
                                 <input type="hidden" name="discount_percent"  value="<?=$discount_percent?>" />
                             <?php }else { ?>

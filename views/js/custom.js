@@ -261,12 +261,22 @@ $(document).ready(function(e) {
 
     $('body').on('click', 'input[name="shipping_type"]:checked', function(){
         var shipping_price = $(this).attr('data-price');
-        $('#shipping-price').html(shipping_price+" €");
+        
         var total_price = $('#total-price').attr('data-total-price');
+        
+        if((total_price >= 150 && total_price < 300) || total_price > 300){
+            shipping_price = '0.00';
+        }
+        console.log(shipping_price);
         var total = parseFloat(total_price) + parseFloat(shipping_price);
+        var total_wiht_discount = $('#total-price-discount').attr('data-total-price');
         var vat = parseFloat($('#vat').attr('data-vat')).toFixed(2);
+        $('#shipping-price').html(shipping_price+" €");
         $('#vat').html(vat+" €");
         $('#hidden_price').val(total.toFixed(2));
+        
+        $('#total-price-discount').html(parseFloat(total_wiht_discount) +  parseFloat(shipping_price)+" €");
+        
         $('#total-price').html(total.toFixed(2)+" €");
     });
     
