@@ -59,13 +59,17 @@ class registerModuleController extends baseController{
            $this->usersModel->active = 1;
            $this->usersModel->salt = $this->generateSalt(22, true).md5(uniqid(rand(), true));
            if($this->usersModel->update()){
-               echo "Activated";
+               $this->template['message'] = "Ihr Konto ist aktiv! <a href='"._WEB_PATH."login'>Login</a>";
+               $this->template['class'] = "alert alert-success";
            }else{
-               echo "Not Activated";
+               $this->template['message'] = "Es gibt eine grēks war, als Aufgabe zu aktivieren, versuchen Sie es erneut!";
+               $this->template['class'] = "alert alert-danger";
            }   
        }else{
-           echo "Nepostojeci korisnik";
+           $this->template['message'] = "Nicht existent Benutzer!";
+           $this->template['class'] = "alert alert-danger";
        }
+       Loader::loadView('activate', 'register', false, $this->template);
     }
     
     private function sendConfirmationMail($data){
@@ -93,7 +97,7 @@ class registerModuleController extends baseController{
         $mail->isHTML(true);                                  // Set email format to HTML
 
         $mail->Subject = 'Registration confirmation mail';
-        $mail->Body    = 'To confirm your registration please click the following  <a href="'._WEB_PATH.'register/confirm/'.$data['salt'].'"><b>link!</b></a>';
+        $mail->Body    = 'Sie haben sich erfolgreich Registriert wenn sie ihr Profil aktivieren möchten klicken sie auf diesen <a href="'._WEB_PATH.'register/confirm/'.$data['salt'].'"><b>link!</b></a>';
         //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         if(!$mail->send()) {
