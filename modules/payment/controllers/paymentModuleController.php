@@ -205,7 +205,8 @@ class paymentModuleController extends baseController{
             * @param at\externet\eps_bank_transfer\BankConfirmationDetails $bankConfirmationDetails
             * @return true
             */
-           $paymentConfirmationCallback = function($plainXml, $bankConfirmationDetails)
+           $model = $this->_transactionsMdl;
+           $paymentConfirmationCallback = function($plainXml, $bankConfirmationDetails) use ($model)
            {
              
              
@@ -215,6 +216,16 @@ class paymentModuleController extends baseController{
                 // TODO: Do your payment completion handling here
                // You should use $bankConfirmationDetails->GetRemittanceIdentifier();
                  
+               $transaction =  $model->getLastTransaction($bankConfirmationDetails->GetRemittanceIdentifier());
+               
+               if(!$model->updateTrasactionStatus($transaction->ID, 1)){
+                   error_log("Nisam uspeo da promenim status transakcije", 1, "dtest2707@gmail.com");
+                }else{
+                   error_log("Uspeo sam.", 1, "dtest2707@gmail.com"); 
+                }
+             }else{
+                 $transaction = $model->getLastTransaction($bankConfirmationDetails->GetRemittanceIdentifier()); 
+                 $model->updateTrasactionStatus($transaction->ID, 0);
              }
              // True is expected to be returned, otherwise the Scheme Operator will be informed that the server could not accept the payment confirmation
              return true; 
@@ -232,18 +243,18 @@ class paymentModuleController extends baseController{
         //if transaction success
         if ($param == 1) {
            
-            $last_transaction_id = $this->_transactionsMdl->getLastTransaction($_SESSION['user']['user_id']);
-            if(!$this->_transactionsMdl->updateTrasactionStatus($last_transaction_id->ID, 1)){
-               error_log("Nisam uspeo da promenim status transakcije", 1, "savicdragan2707@gmail.com");
-            }else{
-               error_log("Uspeo sam.", 1, "savicdragan2707@gmail.com"); 
-            }
+//            $last_transaction_id = $this->_transactionsMdl->getLastTransaction($_SESSION['user']['user_id']);
+//            if(!$this->_transactionsMdl->updateTrasactionStatus($last_transaction_id->ID, 1)){
+//               error_log("Nisam uspeo da promenim status transakcije", 1, "savicdragan2707@gmail.com");
+//            }else{
+//               error_log("Uspeo sam.", 1, "savicdragan2707@gmail.com"); 
+//            }
             unset($_SESSION['korpa']);
             unset($_SESSION['order_information']);
             Loader::loadView("success", "payment");
         } else {
-            $last_transaction_id = $this->_transactionsMdl->getLastTransaction($_SESSION['user']['user_id']);
-            $this->_transactionsMdl->updateTrasactionStatus($last_transaction_id->ID, 0);
+//            $last_transaction_id = $this->_transactionsMdl->getLastTransaction($_SESSION['user']['user_id']);
+//            $this->_transactionsMdl->updateTrasactionStatus($last_transaction_id->ID, 0);
             unset($_SESSION['korpa']);
             unset($_SESSION['order_information']);
            Loader::loadView("failed", "payment");

@@ -1,4 +1,4 @@
-<div class="product_wrap">
+    <div class="product_wrap">
 <?php //var_dump($price_and_quantity, $products_in_cart); die; ?>
 <div class="container">
     <div class="row">
@@ -70,14 +70,45 @@
                        <?php } }?>
                         <?php if(!empty($price_and_quantity)){?>
                         <?php $vat = number_format($price_and_quantity['ukupna_cena_korpe']*_VAT, 2, '.', ''); ?>
+                          <?php  
+                                $finish_price = number_format($price_and_quantity['ukupna_cena_korpe'] + $vat, 2, '.', '');
+                                $discount = false;
+                                if($finish_price >= 50 && $finish_price < 150){
+                                  $finish_price = $finish_price - ($finish_price * 0.05);
+                                  $discount = true;
+                                  $discount_percent = '5';
+                                }
+                                
+                                if($finish_price >= 150 && $finish_price < 300){
+                                    $finish_price = $finish_price - $finish_price * 0.10;
+                                    $discount = true;
+                                    $discount_percent = '10';
+                                }
+                                if($finish_price > 300){
+                                    $finish_price = $finish_price - $finish_price * 0.15;
+                                    $discount = true;
+                                    $discount_percent = '15';
+                                }
+                                $finish_price = number_format($finish_price, 2, '.', '');
+                            ?>
                         <div class="totle">
                             <ul>
                                 <li>Sub-Total: <span><?=number_format($price_and_quantity['ukupna_cena_korpe'], 2, '.', '');?> €</span></li>
                                 <li>Flat Shipping Rate: <span id="shipping-price"> - </span></li>
                                 <li>VAT (20.0%):<span id="vat" data-vat="<?=$vat?>"><?=$vat?> €</span></li>
                                 <li>Total: <span id="total-price" data-total-price="<?=number_format($price_and_quantity['ukupna_cena_korpe'] + $vat, 2, '.', '');?>"><?=number_format($price_and_quantity['ukupna_cena_korpe'] + $vat, 2, '.', '');?> €</span></li>
+                           
+                            <?php if($discount) {?>
+                                <li>Total with discount <?=$discount_percent?>%: <span id="total-price" data-total-price="<?=$finish_price?>"><?=$finish_price?> €</span></li>
+                                <input type="hidden" name="discount_indicator"  value="1" />  
+                                <input type="hidden" name="discount_percent"  value="<?=$discount_percent?>" />
+                            <?php }else { ?>
+                                <input type="hidden" name="discount_indicator"  value="0" />  
+                            <?php } ?>
                             </ul>
-                            <input type="hidden" name="total_price" id="hidden_price" value="<?=number_format($price_and_quantity['ukupna_cena_korpe'] + $vat, 2, '.', '');?>" />
+                          
+                            <input type="hidden" name="total_price" id="hidden_price" value="<?=$finish_price?>" />
+                            
                             <input type="submit" name="submit" class="red-button" value="Buy" />
                           </form>
                         </div>

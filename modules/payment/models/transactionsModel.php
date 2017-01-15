@@ -51,8 +51,8 @@ class transactionsModel extends baseModel{
    }
   
 
-   public function getLastTransaction($user_id){
-       $this->where = "transactions.user_id = '$user_id'";
+   public function getLastTransaction($transaction_id){
+       $this->where = "transactions.transaction_id = '$transaction_id'";
        $this->orderBy = "transactions.ID DESC";
        $this->limit = 1;
        if(!empty($this->getAll('transactions.ID')))
