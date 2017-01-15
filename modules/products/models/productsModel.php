@@ -138,5 +138,8 @@ class productsModel extends baseModel{
        $products = $this->getAll("count(ID) as 'all'");
        return $products[0]->all;
    }
-    
+   
+   public function getProductsWithUnit($product_id){
+       
+   }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2016 at 10:37 PM
+-- Generation Time: Jan 15, 2017 at 08:11 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -125,7 +125,10 @@ INSERT INTO `images` (`ID`, `product_id`, `image_name`) VALUES
 (4, NULL, '581cd45f05dc02016-11-04.jpg'),
 (5, 7, '583752b3181f02016-11-24.jpg'),
 (6, 3, '58375277356b02016-11-24.jpg'),
-(7, 8, '583ca60eaab402016-11-28.jpg');
+(7, 8, '583ca60eaab402016-11-28.jpg'),
+(8, NULL, '583de3afd76e02016-11-29.jpg'),
+(9, 9, '583de7f92c8802016-11-29.jpg'),
+(10, 10, '587bd70791e6f2017-01-15.jpg');
 
 -- --------------------------------------------------------
 
@@ -206,18 +209,48 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`ID`, `transaction_id`, `product_id`, `product_quantity`, `product_unit_price`) VALUES
-(1, 1, 3, 1, '10.55'),
-(2, 2, 1, 1, '120.00'),
-(3, 3, 3, 1, '10.55'),
-(4, 4, 1, 1, '120.00'),
-(5, 5, 7, 1, '15.90'),
-(6, 6, 3, 1, '10.55'),
-(7, 7, 1, 1, '120.00'),
-(8, 8, 2, 1, '12.50'),
-(9, 9, 7, 1, '15.90'),
-(10, 10, 7, 1, '15.90'),
-(11, 11, 7, 1, '15.90'),
-(12, 1, 2, 1, '10.55');
+(1, 1, 1, 2, '3.50'),
+(2, 1, 2, 1, '3.50'),
+(3, 1, 3, 1, '3.50'),
+(4, 2, 13, 1, '3.50'),
+(5, 3, 14, 1, '3.50'),
+(6, 4, 16, 1, '3.50'),
+(7, 5, 14, 1, '3.50'),
+(8, 6, 16, 1, '3.50'),
+(9, 6, 15, 1, '3.50'),
+(10, 7, 15, 1, '3.50'),
+(11, 7, 14, 1, '3.50'),
+(12, 8, 14, 1, '3.50'),
+(13, 8, 13, 2, '3.50'),
+(14, 9, 15, 1, '3.50'),
+(15, 9, 14, 1, '3.50'),
+(16, 10, 16, 1, '3.50'),
+(17, 11, 16, 1, '3.50'),
+(18, 11, 13, 1, '3.50'),
+(19, 12, 16, 1, '3.50'),
+(20, 12, 15, 1, '3.50'),
+(21, 13, 11, 1, '3.50'),
+(22, 14, 16, 1, '3.50'),
+(23, 15, 4, 1, '12.50'),
+(24, 15, 3, 1, '10.55'),
+(25, 16, 11, 10, '3.50'),
+(26, 16, 15, 4, '3.50'),
+(27, 16, 16, 4, '3.50'),
+(28, 16, 14, 3, '3.50'),
+(29, 16, 13, 3, '3.50'),
+(30, 16, 12, 4, '3.50'),
+(31, 16, 10, 7, '3.50'),
+(32, 17, 15, 1, '3.50'),
+(33, 17, 14, 1, '3.50'),
+(34, 18, 14, 1, '3.50'),
+(35, 19, 14, 3, '3.50'),
+(36, 19, 13, 3, '3.50'),
+(37, 19, 16, 1, '3.50'),
+(38, 19, 11, 1, '3.50'),
+(39, 19, 10, 1, '3.50'),
+(40, 19, 15, 1, '3.50'),
+(41, 19, 3, 1, '10.55'),
+(42, 19, 4, 1, '12.50');
 
 -- --------------------------------------------------------
 
@@ -262,11 +295,13 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`ID`, `product_name`, `product_description`, `product_price`, `product_quantity`, `product_category`, `product_subcategory`, `product_sub_subcategory`, `product_status`) VALUES
-(1, '3M - Car Wash Soap', '<p>3M - Car Wash Soap</p>', '12.92', 10, 1, 2, 0, 1),
+(1, '3', '&#60;p&#62;&#38;lt;p&#38;gt;3M - Car Wash Soap&#38;lt;/p&#38;gt;&#60;/p&#62;', '12.92', 10, 1, 2, 0, 1),
 (2, 'Auto Finesse - Avalanche', '<h1 class="fn product-title">Auto Finesse - Avalanche</h1>', '20.00', 10, 1, 2, 0, 1),
 (3, 'proba123', '&#60;p&#62;&#38;lt;p&#38;gt;proba&#38;lt;/p&#38;gt;&#60;/p&#62;', '100.00', 10, 1, 2, 0, 1),
 (7, 'proba12377777', '&#60;p&#62;&#38;lt;p&#38;gt;proba&#38;lt;/p&#38;gt;&#60;/p&#62;', '100.00', 10, 1, 2, 0, 1),
-(8, 'eeee', '', '3.50', 10, 14, 15, 0, 1);
+(8, 'eeee', '<p>dsasa</p>\n<p>s</p>\n<p>da</p>\n<p>as</p>\n<p>sad</p>', '3.50', 10, 14, 15, 0, 1),
+(9, 'probica filtera stringa ok ok', '<p><strong>sadsadsa</strong></p>\n<p><em>sadsa</em></p>\n<p>sad</p>\n<p>&nbsp;"sad"</p>', '3.50', 10, 14, 15, 0, 1),
+(10, 'Testic', '<p>testic</p>', '500.00', 1, 14, 15, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -312,17 +347,86 @@ CREATE TABLE `transactions` (
 --
 
 INSERT INTO `transactions` (`ID`, `transaction_id`, `user_id`, `shipping_method_id`, `payment_method_id`, `total_price`, `transaction_date`, `status`) VALUES
-(1, 'Order - 5831a242b82dc', 18, 1, 1, '12.66', '2016-11-20 14:17:10', '2'),
-(2, 'Order - 5831a32ff190e', 18, 1, 1, '144.00', '2016-11-20 14:21:05', '1'),
-(3, 'Order - 5831a3a804a33', 18, 1, 1, '12.66', '2016-11-20 14:23:12', '1'),
-(4, 'Order - 5831a43a8fc81', 18, 1, 1, '144.00', '2016-11-20 14:25:30', '1'),
-(5, 'Order - 5831a468d75f3', 18, 1, 1, '19.08', '2016-11-20 14:26:19', '1'),
-(6, 'Order - 5831a6b1f2bc1', 18, 1, 1, '12.66', '2016-11-20 14:36:04', '1'),
-(7, 'Order - 5831a927520e3', 18, 2, 1, '144.00', '2016-11-20 14:46:33', '1'),
-(8, 'Order - 5831b960b6ac8', 18, 1, 1, '15.00', '2016-11-20 15:55:46', '1'),
-(9, 'Order - 5831bfb113262', 11, 1, 1, '19.08', '2016-11-20 16:24:06', '1'),
-(10, 'Order - 58321e6956954', 18, 1, 1, '19.08', '2016-11-20 23:07:44', '1'),
-(11, 'Order - 583315e37d0a7', 18, 1, 1, '19.08', '2016-11-21 16:42:33', '0');
+(1, 'Order - 58546a1482643', 1, 2, 1, '21.80', '2016-12-16 23:26:28', '1'),
+(2, 'Order - 58546a846ce07', 1, 3, 1, '10.20', '2016-12-16 23:28:20', '0'),
+(3, 'Order - 58546e0841d9e', 1, 1, 1, '4.20', '2016-12-16 23:43:20', '0'),
+(4, 'Order - 5855758e3a3c9', 1, 2, 1, '9.20', '2016-12-17 18:27:42', '2'),
+(5, 'Order - 585576925b44f', 1, 1, 1, '4.20', '2016-12-17 18:32:02', '1'),
+(6, 'Order - 585578fc0256b', 3, 1, 1, '8.40', '2016-12-17 18:42:20', '1'),
+(7, 'Order - 585580f24b4a3', 4, 3, 1, '14.40', '2016-12-17 19:16:18', '1'),
+(8, 'Order - 58559fa0de670', 1, 2, 1, '17.60', '2016-12-17 21:27:12', '2'),
+(9, 'Order - 5855cb3d9048f', 1, 2, 1, '13.40', '2016-12-18 00:33:17', '1'),
+(10, 'Order - 5855ccb64a2bc', 1, 1, 1, '4.20', '2016-12-18 00:39:34', '2'),
+(11, 'Order - 5857be0b0f732', 1, 2, 1, '13.40', '2016-12-19 12:01:31', '1'),
+(12, 'Order - 5857be8d0cf53', 1, 1, 1, '8.40', '2016-12-19 12:03:41', '1'),
+(13, 'Order - 58593bfbbc4b8', 1, 1, 1, '4.20', '2016-12-20 15:11:07', '1'),
+(14, 'Order - 58593c9dc22d6', 1, 1, 1, '4.20', '2016-12-20 15:13:49', '1'),
+(15, 'Order - 58594ba23643a', 1, 1, 1, '27.66', '2016-12-20 16:17:54', '1'),
+(16, 'Order - 585954e70989b', 1, 1, 1, '147.00', '2016-12-20 16:57:27', '0'),
+(17, 'Order - 585bf0e8404f4', 11, 1, 1, '8.40', '2016-12-22 16:27:36', '2'),
+(18, 'Order - 585bf285e37dd', 1, 3, 1, '10.20', '2016-12-22 16:34:29', '1'),
+(19, 'Order - 585bf3225581e', 1, 3, 1, '75.66', '2016-12-22 16:37:06', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `units`
+--
+
+CREATE TABLE `units` (
+  `ID` int(10) UNSIGNED NOT NULL,
+  `unit_name` varchar(3) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `units`
+--
+
+INSERT INTO `units` (`ID`, `unit_name`) VALUES
+(1, 'ml'),
+(2, 'l');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `units_products`
+--
+
+CREATE TABLE `units_products` (
+  `ID` int(10) UNSIGNED NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `unit_quantity_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `units_products`
+--
+
+INSERT INTO `units_products` (`ID`, `product_id`, `unit_quantity_id`, `quantity`) VALUES
+(1, 9, 2, 50),
+(2, 9, 1, 250);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `units_quantity`
+--
+
+CREATE TABLE `units_quantity` (
+  `ID` int(10) UNSIGNED NOT NULL,
+  `unit_id` int(11) NOT NULL,
+  `quantity_unit` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `units_quantity`
+--
+
+INSERT INTO `units_quantity` (`ID`, `unit_id`, `quantity_unit`) VALUES
+(1, 1, 500),
+(2, 1, 200),
+(3, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -338,19 +442,28 @@ CREATE TABLE `users` (
   `password` varchar(250) NOT NULL,
   `company` varchar(100) NOT NULL,
   `salt` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `country` varchar(250) NOT NULL,
+  `address` varchar(250) NOT NULL,
+  `telephone` varchar(20) NOT NULL,
+  `zip` varchar(25) NOT NULL,
   `active` tinyint(4) NOT NULL DEFAULT '0',
-  `last_login` datetime NOT NULL,
-  `status` tinyint(1) NOT NULL COMMENT '1 - admin 2 - user'
+  `status` tinyint(1) NOT NULL COMMENT '1 - admin 2 - user',
+  `last_login` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`ID`, `first_name`, `last_name`, `email`, `password`, `company`, `salt`, `active`, `last_login`, `status`) VALUES
-(11, 'Goran', 'Mladenovic', 'savicdragan15@facebook.com', '$2y$12$gAFPfixVUWKUSlUIYXAleOlwIE6JNNy7TyLsy0jlK3XdovseZWDzS', '', '4rmCugjw3oEDTlw8SPGd5N65f129db2558e4312021dfa4c19c4186', 1, '0000-00-00 00:00:00', 2),
-(18, 'Dragan', 'Savic', 'savicdragan2707@gmail.com', '$2y$12$NldVbmRDZGRYNlRyUmZSceraucNc4pGYgBPZG1s260WpFJleRrexi', '', 'aCpMLzu41S2ymSHxyDupRL27bdc63b4bb93bf490a8172ae35bbf60', 1, '2016-11-24 19:33:59', 2),
-(14, '', '', 'dragan@mediaworks.io', '$2y$12$NnlCQWRvMUlaVzdNb3FCd.1zcM5EqFMaH6JSwTCD7DqQyREClx3Tm', '', 'TIlqD9L13kOM4AL09Jxrcacfdbb05da5a51648b0fe8d22b9c464b8', 1, '2016-11-28 21:47:22', 1);
+INSERT INTO `users` (`ID`, `first_name`, `last_name`, `email`, `password`, `company`, `salt`, `city`, `country`, `address`, `telephone`, `zip`, `active`, `status`, `last_login`) VALUES
+(11, 'Goran', 'Mladenovic', 'savicdragan15@facebook.com', '$2y$12$gAFPfixVUWKUSlUIYXAleOlwIE6JNNy7TyLsy0jlK3XdovseZWDzS', '', '4rmCugjw3oEDTlw8SPGd5N65f129db2558e4312021dfa4c19c4186', '', '', '', '', '', 1, 2, '2016-12-16 21:09:26'),
+(28, 'Dragan', 'Savic', 'dtest2707@gmail.com', '$2y$12$N0tlTkdYQUomdnU5a0xZYemL0nfNyFEr/GDVKmMck9Ft6zaUbl3iu', '', 'E7HC61UpX6FkSglnpY4aYnbd7476742644c5931f9bad3470e3f0b2', 'Beograd', 'Austria', 'Kumanovska 13', '381637625902', '11000', 1, 2, '2017-01-15 13:20:59'),
+(14, '', '', 'dragan@mediaworks.io', '$2y$12$NnlCQWRvMUlaVzdNb3FCd.1zcM5EqFMaH6JSwTCD7DqQyREClx3Tm', '', 'TIlqD9L13kOM4AL09Jxrcacfdbb05da5a51648b0fe8d22b9c464b8', '', '', '', '', '', 1, 1, '2017-01-15 19:16:57'),
+(20, '', '', '', '$2y$12$hGxAd706JmLOpjbsxs03LuqI0BWd.yYmuZpf9./WmhE7nawnLy9TG', '', 'G4UiyqtiEgCwrNdmYJ0SbUe86a11db17866d9911b8eea2bf28c293', '', '', '', '', '', 0, 2, '2016-12-16 21:09:26'),
+(21, 'Dragan', 'Testerko', 'savicdragan@gmail.com', '$2y$12$aFdkJThnSkpWQnJaYmlHSOhskriMd1GKAb2gYufedQMhk6SFLgQ06', '', 'ZdgF1ihLiAzLrHuU642SXx0484f6cb89422fdf2978b5cf8419e1a5', 'Beograd', 'Austria', 'Kumanovska 13', '381637625902', '11000', 0, 2, '2016-12-16 20:56:12'),
+(22, 'Probica', 'Testerko', 'savicdragan270777777@gmail.com', '$2y$12$Nm0waWxWNEshcW45IzgzTe7tlV0KRvMmdh7qOJQojNg8lsDXwtRVy', '', 'QfdBuYESXXlSXZDXiy6N8da687216de0d86638d0e27fcc9f70d771', 'Beograd', 'Austria', 'Kumanovska 133', '381637625902', '11000', 0, 2, '2016-12-16 20:58:08'),
+(1, 'Dragan', 'Savic', 'savicdragan2707@gmail.com', '$2y$12$I00zZEBUP2pVcGl0QlgmWOqn9gozOjKOvmXfyQ0kWrEV7uORWSHs6', '', 'bq0eGkU58WR9E9HdhM4qQsbe28e95f8cc551c53557cc2a8061bc78', 'Beograd', 'Austria', 'Kumanovska 13', '381637625902', '11000', 1, 2, '2017-01-15 13:28:22');
 
 --
 -- Indexes for dumped tables
@@ -406,6 +519,24 @@ ALTER TABLE `transactions`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `units`
+--
+ALTER TABLE `units`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `units_products`
+--
+ALTER TABLE `units_products`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `units_quantity`
+--
+ALTER TABLE `units_quantity`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -424,7 +555,7 @@ ALTER TABLE `datatables_demo`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `navigation`
 --
@@ -434,7 +565,7 @@ ALTER TABLE `navigation`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT for table `payment_methods`
 --
@@ -444,7 +575,7 @@ ALTER TABLE `payment_methods`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `shipping_methods`
 --
@@ -454,12 +585,27 @@ ALTER TABLE `shipping_methods`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT for table `units`
+--
+ALTER TABLE `units`
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `units_products`
+--
+ALTER TABLE `units_products`
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `units_quantity`
+--
+ALTER TABLE `units_quantity`
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

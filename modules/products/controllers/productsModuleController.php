@@ -13,6 +13,7 @@ class productsModuleController extends baseController
       Loader::loadModel($this, "navigation");
       $this->productsModel = $this->models['products'];
       $this->navigationModel = $this->models['navigation'];
+      $this->_callMdl('unitsproducts', 'products');
     }
     /**
      * 
@@ -181,9 +182,10 @@ class productsModuleController extends baseController
        
          foreach ($latestProducts as $product){
             $product->product_name_url = $this->url_friendly($product->product_name);
+            $product->units_product = $this->_unitsproductsMdl->getProductsWithUnit($product->ID);
         }
         $this->template['latestProducts'] = $latestProducts;
-        
+        //var_dump($latestProducts); die;
         Loader::loadView("index","",false,$this->template);
     }
     
