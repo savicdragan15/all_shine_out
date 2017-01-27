@@ -15,7 +15,7 @@
                             <?php foreach($shipping_methods as $key=>$method){?>
                             <div class="radio-btn"> 
                                 <input type="radio" <?=$key==0?'checked':''?> name="shipping_type"  data-price="<?=$method->price?>" value="<?=$method->ID?>" id="<?=$method->ID?>"/>
-                                <label for="<?=$method->ID?>"><?=$method->name?></label>
+                                <label for="<?=$method->ID?>"><?=$method->name?> <?=$method->price?> €</label>
                             </div>
                             <?php } ?>
                     </div>
@@ -36,9 +36,9 @@
                                 <label for="eps"><?=$method->preview_name?></label>
                             </div>
                             <?php } ?>
-<!--                            <label>Add Comments About Your Order  </label>
-                            <textarea></textarea>
-                            <input type="submit" value="continue" class="red-button">-->
+                            <label>Add Comments About Your Order  </label>
+                            <textarea name="comment"></textarea>
+<!--                            <input type="submit" value="continue" class="red-button">-->
                        
                     </div>
 

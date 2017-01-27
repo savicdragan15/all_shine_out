@@ -5,17 +5,19 @@
  * @property int $product_id
  * @property string $product_quantity
  * @property string $product_unit_price
+ * @property text $comment
  */
 class ordersModel extends baseModel{
     
     public static $key = "ID";
     public static $table = "orders";
     
-    public function insertOrder($product, $transaction_id){
+    public function insertOrder($product, $transaction_id, $comment){
        $this->transaction_id = $transaction_id;
        $this->product_id = $product['proizvod_id'];
        $this->product_quantity = $product['proizvod_kolicina'];
        $this->product_unit_price = $product['proizvod_cena'];
+       $this->comment = $comment;
        return $this->insert();
     }
     

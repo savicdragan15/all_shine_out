@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2017 at 08:11 PM
+-- Generation Time: Jan 27, 2017 at 05:41 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -128,7 +128,19 @@ INSERT INTO `images` (`ID`, `product_id`, `image_name`) VALUES
 (7, 8, '583ca60eaab402016-11-28.jpg'),
 (8, NULL, '583de3afd76e02016-11-29.jpg'),
 (9, 9, '583de7f92c8802016-11-29.jpg'),
-(10, 10, '587bd70791e6f2017-01-15.jpg');
+(10, 10, '587bd70791e6f2017-01-15.jpg'),
+(11, NULL, '58891f6d489b82017-01-25.jpg'),
+(12, NULL, '58891f8fe17082017-01-25.jpg'),
+(13, NULL, '58891fa4cd2d02017-01-25.jpg'),
+(14, NULL, '588920167be082017-01-25.jpg'),
+(15, NULL, '588920fba27382017-01-25.jpg'),
+(16, NULL, '588921d0491882017-01-25.jpg'),
+(17, NULL, '588921f463f382017-01-25.jpg'),
+(18, NULL, '58892203948902017-01-25.jpg'),
+(19, NULL, '588922181f9782017-01-25.jpg'),
+(20, NULL, '5889228563b502017-01-25.jpg'),
+(21, NULL, '588922d1b34c02017-01-25.jpg'),
+(22, 11, '58892319aded02017-01-25.jpg');
 
 -- --------------------------------------------------------
 
@@ -201,56 +213,57 @@ CREATE TABLE `orders` (
   `transaction_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `product_quantity` int(11) NOT NULL,
-  `product_unit_price` decimal(20,2) NOT NULL
+  `product_unit_price` decimal(20,2) NOT NULL,
+  `comment` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`ID`, `transaction_id`, `product_id`, `product_quantity`, `product_unit_price`) VALUES
-(1, 1, 1, 2, '3.50'),
-(2, 1, 2, 1, '3.50'),
-(3, 1, 3, 1, '3.50'),
-(4, 2, 13, 1, '3.50'),
-(5, 3, 14, 1, '3.50'),
-(6, 4, 16, 1, '3.50'),
-(7, 5, 14, 1, '3.50'),
-(8, 6, 16, 1, '3.50'),
-(9, 6, 15, 1, '3.50'),
-(10, 7, 15, 1, '3.50'),
-(11, 7, 14, 1, '3.50'),
-(12, 8, 14, 1, '3.50'),
-(13, 8, 13, 2, '3.50'),
-(14, 9, 15, 1, '3.50'),
-(15, 9, 14, 1, '3.50'),
-(16, 10, 16, 1, '3.50'),
-(17, 11, 16, 1, '3.50'),
-(18, 11, 13, 1, '3.50'),
-(19, 12, 16, 1, '3.50'),
-(20, 12, 15, 1, '3.50'),
-(21, 13, 11, 1, '3.50'),
-(22, 14, 16, 1, '3.50'),
-(23, 15, 4, 1, '12.50'),
-(24, 15, 3, 1, '10.55'),
-(25, 16, 11, 10, '3.50'),
-(26, 16, 15, 4, '3.50'),
-(27, 16, 16, 4, '3.50'),
-(28, 16, 14, 3, '3.50'),
-(29, 16, 13, 3, '3.50'),
-(30, 16, 12, 4, '3.50'),
-(31, 16, 10, 7, '3.50'),
-(32, 17, 15, 1, '3.50'),
-(33, 17, 14, 1, '3.50'),
-(34, 18, 14, 1, '3.50'),
-(35, 19, 14, 3, '3.50'),
-(36, 19, 13, 3, '3.50'),
-(37, 19, 16, 1, '3.50'),
-(38, 19, 11, 1, '3.50'),
-(39, 19, 10, 1, '3.50'),
-(40, 19, 15, 1, '3.50'),
-(41, 19, 3, 1, '10.55'),
-(42, 19, 4, 1, '12.50');
+INSERT INTO `orders` (`ID`, `transaction_id`, `product_id`, `product_quantity`, `product_unit_price`, `comment`) VALUES
+(1, 1, 1, 2, '3.50', ''),
+(2, 1, 2, 1, '3.50', ''),
+(3, 1, 3, 1, '3.50', ''),
+(4, 2, 13, 1, '3.50', ''),
+(5, 3, 14, 1, '3.50', ''),
+(6, 4, 16, 1, '3.50', ''),
+(7, 5, 14, 1, '3.50', ''),
+(8, 6, 16, 1, '3.50', ''),
+(9, 6, 15, 1, '3.50', ''),
+(10, 7, 15, 1, '3.50', ''),
+(11, 7, 14, 1, '3.50', ''),
+(12, 8, 14, 1, '3.50', ''),
+(13, 8, 13, 2, '3.50', ''),
+(14, 9, 15, 1, '3.50', ''),
+(15, 9, 14, 1, '3.50', ''),
+(16, 10, 16, 1, '3.50', ''),
+(17, 11, 16, 1, '3.50', ''),
+(18, 11, 13, 1, '3.50', ''),
+(19, 12, 16, 1, '3.50', ''),
+(20, 12, 15, 1, '3.50', ''),
+(21, 13, 11, 1, '3.50', ''),
+(22, 14, 16, 1, '3.50', ''),
+(23, 15, 4, 1, '12.50', ''),
+(24, 15, 3, 1, '10.55', ''),
+(25, 16, 11, 10, '3.50', ''),
+(26, 16, 15, 4, '3.50', ''),
+(27, 16, 16, 4, '3.50', ''),
+(28, 16, 14, 3, '3.50', ''),
+(29, 16, 13, 3, '3.50', ''),
+(30, 16, 12, 4, '3.50', ''),
+(31, 16, 10, 7, '3.50', ''),
+(32, 17, 15, 1, '3.50', ''),
+(33, 17, 14, 1, '3.50', ''),
+(34, 18, 14, 1, '3.50', ''),
+(35, 19, 14, 3, '3.50', ''),
+(36, 19, 13, 3, '3.50', ''),
+(37, 19, 16, 1, '3.50', ''),
+(38, 19, 11, 1, '3.50', ''),
+(39, 19, 10, 1, '3.50', ''),
+(40, 19, 15, 1, '3.50', ''),
+(41, 19, 3, 1, '10.55', ''),
+(42, 19, 4, 1, '12.50', '');
 
 -- --------------------------------------------------------
 
@@ -301,7 +314,8 @@ INSERT INTO `products` (`ID`, `product_name`, `product_description`, `product_pr
 (7, 'proba12377777', '&#60;p&#62;&#38;lt;p&#38;gt;proba&#38;lt;/p&#38;gt;&#60;/p&#62;', '100.00', 10, 1, 2, 0, 1),
 (8, 'eeee', '<p>dsasa</p>\n<p>s</p>\n<p>da</p>\n<p>as</p>\n<p>sad</p>', '3.50', 10, 14, 15, 0, 1),
 (9, 'probica filtera stringa ok ok', '<p><strong>sadsadsa</strong></p>\n<p><em>sadsa</em></p>\n<p>sad</p>\n<p>&nbsp;"sad"</p>', '3.50', 10, 14, 15, 0, 1),
-(10, 'Testic', '<p>testic</p>', '500.00', 1, 14, 15, 0, 1);
+(10, 'Testic123', '<p>testic <strong>sadsadasdsad</strong></p>', '500.00', 1, 14, 15, 0, 1),
+(11, 'eee', '<p>eee</p>', '10.00', 10, 1, 3, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -396,16 +410,17 @@ CREATE TABLE `units_products` (
   `ID` int(10) UNSIGNED NOT NULL,
   `product_id` int(11) NOT NULL,
   `unit_quantity_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL
+  `quantity` int(11) NOT NULL,
+  `price` decimal(20,2) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `units_products`
 --
 
-INSERT INTO `units_products` (`ID`, `product_id`, `unit_quantity_id`, `quantity`) VALUES
-(1, 9, 2, 50),
-(2, 9, 1, 250);
+INSERT INTO `units_products` (`ID`, `product_id`, `unit_quantity_id`, `quantity`, `price`) VALUES
+(1, 9, 2, 50, '25.00'),
+(2, 9, 1, 250, '50.00');
 
 -- --------------------------------------------------------
 
@@ -459,11 +474,11 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`ID`, `first_name`, `last_name`, `email`, `password`, `company`, `salt`, `city`, `country`, `address`, `telephone`, `zip`, `active`, `status`, `last_login`) VALUES
 (11, 'Goran', 'Mladenovic', 'savicdragan15@facebook.com', '$2y$12$gAFPfixVUWKUSlUIYXAleOlwIE6JNNy7TyLsy0jlK3XdovseZWDzS', '', '4rmCugjw3oEDTlw8SPGd5N65f129db2558e4312021dfa4c19c4186', '', '', '', '', '', 1, 2, '2016-12-16 21:09:26'),
 (28, 'Dragan', 'Savic', 'dtest2707@gmail.com', '$2y$12$N0tlTkdYQUomdnU5a0xZYemL0nfNyFEr/GDVKmMck9Ft6zaUbl3iu', '', 'E7HC61UpX6FkSglnpY4aYnbd7476742644c5931f9bad3470e3f0b2', 'Beograd', 'Austria', 'Kumanovska 13', '381637625902', '11000', 1, 2, '2017-01-15 13:20:59'),
-(14, '', '', 'dragan@mediaworks.io', '$2y$12$NnlCQWRvMUlaVzdNb3FCd.1zcM5EqFMaH6JSwTCD7DqQyREClx3Tm', '', 'TIlqD9L13kOM4AL09Jxrcacfdbb05da5a51648b0fe8d22b9c464b8', '', '', '', '', '', 1, 1, '2017-01-15 19:16:57'),
+(14, '', '', 'dragan@mediaworks.io', '$2y$12$NnlCQWRvMUlaVzdNb3FCd.1zcM5EqFMaH6JSwTCD7DqQyREClx3Tm', '', 'TIlqD9L13kOM4AL09Jxrcacfdbb05da5a51648b0fe8d22b9c464b8', '', '', '', '', '', 1, 1, '2017-01-25 21:49:00'),
 (20, '', '', '', '$2y$12$hGxAd706JmLOpjbsxs03LuqI0BWd.yYmuZpf9./WmhE7nawnLy9TG', '', 'G4UiyqtiEgCwrNdmYJ0SbUe86a11db17866d9911b8eea2bf28c293', '', '', '', '', '', 0, 2, '2016-12-16 21:09:26'),
 (21, 'Dragan', 'Testerko', 'savicdragan@gmail.com', '$2y$12$aFdkJThnSkpWQnJaYmlHSOhskriMd1GKAb2gYufedQMhk6SFLgQ06', '', 'ZdgF1ihLiAzLrHuU642SXx0484f6cb89422fdf2978b5cf8419e1a5', 'Beograd', 'Austria', 'Kumanovska 13', '381637625902', '11000', 0, 2, '2016-12-16 20:56:12'),
 (22, 'Probica', 'Testerko', 'savicdragan270777777@gmail.com', '$2y$12$Nm0waWxWNEshcW45IzgzTe7tlV0KRvMmdh7qOJQojNg8lsDXwtRVy', '', 'QfdBuYESXXlSXZDXiy6N8da687216de0d86638d0e27fcc9f70d771', 'Beograd', 'Austria', 'Kumanovska 133', '381637625902', '11000', 0, 2, '2016-12-16 20:58:08'),
-(1, 'Dragan', 'Savic', 'savicdragan2707@gmail.com', '$2y$12$I00zZEBUP2pVcGl0QlgmWOqn9gozOjKOvmXfyQ0kWrEV7uORWSHs6', '', 'bq0eGkU58WR9E9HdhM4qQsbe28e95f8cc551c53557cc2a8061bc78', 'Beograd', 'Austria', 'Kumanovska 13', '381637625902', '11000', 1, 2, '2017-01-15 13:28:22');
+(1, 'Dragan', 'Savic', 'savicdragan2707@gmail.com', '$2y$12$I00zZEBUP2pVcGl0QlgmWOqn9gozOjKOvmXfyQ0kWrEV7uORWSHs6', '', 'bq0eGkU58WR9E9HdhM4qQsbe28e95f8cc551c53557cc2a8061bc78', 'Beograd', 'Austria', 'Kumanovska 13', '381637625902', '11000', 1, 2, '2017-01-23 20:50:24');
 
 --
 -- Indexes for dumped tables
@@ -555,7 +570,7 @@ ALTER TABLE `datatables_demo`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `navigation`
 --
@@ -575,7 +590,7 @@ ALTER TABLE `payment_methods`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `shipping_methods`
 --

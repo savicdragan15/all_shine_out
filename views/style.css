@@ -446,8 +446,8 @@ header nav > ul > li ul li a{display: block;}
 
 .payment form {padding: 0px !important; }
 .payment form span {float: right; font: 13px 'Arial' sans-serif; color: #787878; margin-right: 13px;}
-.payment form > label { font-weight: bold !important;margin-top: 0px !important; width: 100% !important; margin-bottom: 11px; }
-.payment form textarea { width: 98%; resize: none; font: 13px 'Arial' sans-serif; box-shadow: none; outline: none; padding: 10px; height: 241px; border: 1px solid #dddddd;  }
+.payment  > label { font-weight: bold !important;margin-top: 0px !important; width: 100% !important; margin-bottom: 11px; }
+.payment  textarea { width: 98%; resize: none; font: 13px 'Arial' sans-serif; box-shadow: none; outline: none; padding: 10px; height: 241px; border: 1px solid #dddddd;  }
 
 .payment form .red-button {background: #f71919; padding: 15px 15px !important; float: right;font-weight: bold; margin-bottom: 0px !important;;margin-right: 0px !important;}
 .payment form .red-button:hover  {background: #cc2828}

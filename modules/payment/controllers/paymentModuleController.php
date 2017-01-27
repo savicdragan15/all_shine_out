@@ -25,7 +25,7 @@ class paymentModuleController extends baseController{
     }
     
     public function index($login = 0) {
-        if ($login == 1 || User::isLogin()) {
+        if ($login == 1 && User::isLogin()) {
             $products_in_cart = array();
             $price_and_quantity = array();
 
@@ -171,7 +171,7 @@ class paymentModuleController extends baseController{
             );
 
             $transferInitiatorDetails->WebshopArticles[] = $article;
-            $this->_ordersMdl->insertOrder($product, $last_transaction_id);
+            $this->_ordersMdl->insertOrder($product, $last_transaction_id, $this->filter_input($_POST['comment']));
         }
         $_SESSION['korpa']['ukupna_cena_korpe'] = $ukupna_cena_korpe;
         $_SESSION['korpa']['ukupno_proizvoda_u_korpi'] = $ukupno_proizvoda_u_korpi;
