@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 27, 2017 at 05:41 PM
+-- Generation Time: Feb 15, 2017 at 11:39 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -140,7 +140,8 @@ INSERT INTO `images` (`ID`, `product_id`, `image_name`) VALUES
 (19, NULL, '588922181f9782017-01-25.jpg'),
 (20, NULL, '5889228563b502017-01-25.jpg'),
 (21, NULL, '588922d1b34c02017-01-25.jpg'),
-(22, 11, '58892319aded02017-01-25.jpg');
+(22, 11, '58892319aded02017-01-25.jpg'),
+(23, 12, '588f787f775a72017-01-30.jpg');
 
 -- --------------------------------------------------------
 
@@ -297,6 +298,7 @@ CREATE TABLE `products` (
   `product_description` text NOT NULL,
   `product_price` decimal(20,2) NOT NULL,
   `product_quantity` tinyint(4) NOT NULL,
+  `product_units` json NOT NULL,
   `product_category` int(11) NOT NULL,
   `product_subcategory` int(11) NOT NULL,
   `product_sub_subcategory` int(11) NOT NULL,
@@ -307,15 +309,16 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`ID`, `product_name`, `product_description`, `product_price`, `product_quantity`, `product_category`, `product_subcategory`, `product_sub_subcategory`, `product_status`) VALUES
-(1, '3', '&#60;p&#62;&#38;lt;p&#38;gt;3M - Car Wash Soap&#38;lt;/p&#38;gt;&#60;/p&#62;', '12.92', 10, 1, 2, 0, 1),
-(2, 'Auto Finesse - Avalanche', '<h1 class="fn product-title">Auto Finesse - Avalanche</h1>', '20.00', 10, 1, 2, 0, 1),
-(3, 'proba123', '&#60;p&#62;&#38;lt;p&#38;gt;proba&#38;lt;/p&#38;gt;&#60;/p&#62;', '100.00', 10, 1, 2, 0, 1),
-(7, 'proba12377777', '&#60;p&#62;&#38;lt;p&#38;gt;proba&#38;lt;/p&#38;gt;&#60;/p&#62;', '100.00', 10, 1, 2, 0, 1),
-(8, 'eeee', '<p>dsasa</p>\n<p>s</p>\n<p>da</p>\n<p>as</p>\n<p>sad</p>', '3.50', 10, 14, 15, 0, 1),
-(9, 'probica filtera stringa ok ok', '<p><strong>sadsadsa</strong></p>\n<p><em>sadsa</em></p>\n<p>sad</p>\n<p>&nbsp;"sad"</p>', '3.50', 10, 14, 15, 0, 1),
-(10, 'Testic123', '<p>testic <strong>sadsadasdsad</strong></p>', '500.00', 1, 14, 15, 0, 1),
-(11, 'eee', '<p>eee</p>', '10.00', 10, 1, 3, 0, 0);
+INSERT INTO `products` (`ID`, `product_name`, `product_description`, `product_price`, `product_quantity`, `product_units`, `product_category`, `product_subcategory`, `product_sub_subcategory`, `product_status`) VALUES
+(1, '3', '&#60;p&#62;&#38;lt;p&#38;gt;3M - Car Wash Soap&#38;lt;/p&#38;gt;&#60;/p&#62;', '12.92', 10, 'null', 1, 2, 0, 1),
+(2, 'Auto Finesse - Avalanche', '<h1 class="fn product-title">Auto Finesse - Avalanche</h1>', '20.00', 10, 'null', 1, 2, 0, 1),
+(3, 'proba123', '&#60;p&#62;&#38;lt;p&#38;gt;proba&#38;lt;/p&#38;gt;&#60;/p&#62;', '100.00', 10, 'null', 1, 2, 0, 1),
+(7, 'proba12377777', '&#60;p&#62;&#38;lt;p&#38;gt;proba&#38;lt;/p&#38;gt;&#60;/p&#62;', '100.00', 10, 'null', 1, 2, 0, 1),
+(8, 'eeee', '<p>dsasa</p>\n<p>s</p>\n<p>da</p>\n<p>as</p>\n<p>sad</p>', '3.50', 10, 'null', 14, 15, 0, 1),
+(9, 'probica filtera stringa ok ok', '<p><strong>sadsadsa</strong></p>\n<p><em>sadsa</em></p>\n<p>sad</p>\n<p>&nbsp;"sad"</p>', '3.50', 10, '[{"price": "10.50", "unit_id": 1, "quantity": 200}, {"price": "30.00", "unit_id": 2, "quantity": 2}]', 14, 15, 0, 1),
+(10, 'Testic123', '<p>testic <strong>sadsadasdsad</strong></p>', '500.00', 1, 'null', 14, 15, 0, 1),
+(11, 'eee', '<p>eee</p>', '10.00', 10, 'null', 1, 3, 0, 0),
+(12, 'test new img', '<p>eeee</p>', '15.00', 10, 'null', 14, 15, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -403,49 +406,6 @@ INSERT INTO `units` (`ID`, `unit_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `units_products`
---
-
-CREATE TABLE `units_products` (
-  `ID` int(10) UNSIGNED NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `unit_quantity_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `price` decimal(20,2) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `units_products`
---
-
-INSERT INTO `units_products` (`ID`, `product_id`, `unit_quantity_id`, `quantity`, `price`) VALUES
-(1, 9, 2, 50, '25.00'),
-(2, 9, 1, 250, '50.00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `units_quantity`
---
-
-CREATE TABLE `units_quantity` (
-  `ID` int(10) UNSIGNED NOT NULL,
-  `unit_id` int(11) NOT NULL,
-  `quantity_unit` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `units_quantity`
---
-
-INSERT INTO `units_quantity` (`ID`, `unit_id`, `quantity_unit`) VALUES
-(1, 1, 500),
-(2, 1, 200),
-(3, 2, 1);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
@@ -474,7 +434,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`ID`, `first_name`, `last_name`, `email`, `password`, `company`, `salt`, `city`, `country`, `address`, `telephone`, `zip`, `active`, `status`, `last_login`) VALUES
 (11, 'Goran', 'Mladenovic', 'savicdragan15@facebook.com', '$2y$12$gAFPfixVUWKUSlUIYXAleOlwIE6JNNy7TyLsy0jlK3XdovseZWDzS', '', '4rmCugjw3oEDTlw8SPGd5N65f129db2558e4312021dfa4c19c4186', '', '', '', '', '', 1, 2, '2016-12-16 21:09:26'),
 (28, 'Dragan', 'Savic', 'dtest2707@gmail.com', '$2y$12$N0tlTkdYQUomdnU5a0xZYemL0nfNyFEr/GDVKmMck9Ft6zaUbl3iu', '', 'E7HC61UpX6FkSglnpY4aYnbd7476742644c5931f9bad3470e3f0b2', 'Beograd', 'Austria', 'Kumanovska 13', '381637625902', '11000', 1, 2, '2017-01-15 13:20:59'),
-(14, '', '', 'dragan@mediaworks.io', '$2y$12$NnlCQWRvMUlaVzdNb3FCd.1zcM5EqFMaH6JSwTCD7DqQyREClx3Tm', '', 'TIlqD9L13kOM4AL09Jxrcacfdbb05da5a51648b0fe8d22b9c464b8', '', '', '', '', '', 1, 1, '2017-01-25 21:49:00'),
+(14, '', '', 'dragan@mediaworks.io', '$2y$12$NnlCQWRvMUlaVzdNb3FCd.1zcM5EqFMaH6JSwTCD7DqQyREClx3Tm', '', 'TIlqD9L13kOM4AL09Jxrcacfdbb05da5a51648b0fe8d22b9c464b8', '', '', '', '', '', 1, 1, '2017-01-30 17:24:56'),
 (20, '', '', '', '$2y$12$hGxAd706JmLOpjbsxs03LuqI0BWd.yYmuZpf9./WmhE7nawnLy9TG', '', 'G4UiyqtiEgCwrNdmYJ0SbUe86a11db17866d9911b8eea2bf28c293', '', '', '', '', '', 0, 2, '2016-12-16 21:09:26'),
 (21, 'Dragan', 'Testerko', 'savicdragan@gmail.com', '$2y$12$aFdkJThnSkpWQnJaYmlHSOhskriMd1GKAb2gYufedQMhk6SFLgQ06', '', 'ZdgF1ihLiAzLrHuU642SXx0484f6cb89422fdf2978b5cf8419e1a5', 'Beograd', 'Austria', 'Kumanovska 13', '381637625902', '11000', 0, 2, '2016-12-16 20:56:12'),
 (22, 'Probica', 'Testerko', 'savicdragan270777777@gmail.com', '$2y$12$Nm0waWxWNEshcW45IzgzTe7tlV0KRvMmdh7qOJQojNg8lsDXwtRVy', '', 'QfdBuYESXXlSXZDXiy6N8da687216de0d86638d0e27fcc9f70d771', 'Beograd', 'Austria', 'Kumanovska 133', '381637625902', '11000', 0, 2, '2016-12-16 20:58:08'),
@@ -540,18 +500,6 @@ ALTER TABLE `units`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `units_products`
---
-ALTER TABLE `units_products`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `units_quantity`
---
-ALTER TABLE `units_quantity`
-  ADD PRIMARY KEY (`ID`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -570,7 +518,7 @@ ALTER TABLE `datatables_demo`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `navigation`
 --
@@ -590,7 +538,7 @@ ALTER TABLE `payment_methods`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `shipping_methods`
 --
@@ -606,16 +554,6 @@ ALTER TABLE `transactions`
 --
 ALTER TABLE `units`
   MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `units_products`
---
-ALTER TABLE `units_products`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `units_quantity`
---
-ALTER TABLE `units_quantity`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `users`
 --

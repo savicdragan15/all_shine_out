@@ -16,15 +16,15 @@ class cartModuleController extends baseController{
         
         if(isset($_POST['proizvod_id']) && !empty($_POST['proizvod_id'])){
             
-        $product = $this->productsModel->verifyProductPrice($this->filter_input($_POST['proizvod_id']), $this->filter_input($_POST['proizvod_cena']));
-        //var_dump($product); die;
-        if($product->number_records <= 0){
-          $this->response(array(
-              "error" => true,
-              "message" => "Hack attempt!!!"
-          ));
-          die;
-        }
+//        $product = $this->productsModel->verifyProductPrice($this->filter_input($_POST['proizvod_id']), $this->filter_input($_POST['proizvod_cena']));
+//        //var_dump($product); die;
+//        if($product->number_records <= 0){
+//          $this->response(array(
+//              "error" => true,
+//              "message" => "Hack attempt!!!"
+//          ));
+//          die;
+//        }
          
         $kolicina = $_POST['proizvod_kolicina'];
         $cena =  $kolicina * $_POST['proizvod_cena'];
@@ -136,15 +136,15 @@ class cartModuleController extends baseController{
         $proizvod_id = $_POST['proizvod_id'];
         $kolicina = $_POST['proizvod_kolicina'];
         
-        $product = $this->productsModel->verifyProductPrice($this->filter_input($proizvod_id), $this->filter_input($_POST['proizvod_cena']));
-        
-        if($product->number_records <= 0){
-          $this->response(array(
-              "error" => true,
-              "message" => "Hack attempt!!!"
-          ));
-          die;
-        }
+//        $product = $this->productsModel->verifyProductPrice($this->filter_input($proizvod_id), $this->filter_input($_POST['proizvod_cena']));
+//        
+//        if($product->number_records <= 0){
+//          $this->response(array(
+//              "error" => true,
+//              "message" => "Hack attempt!!!"
+//          ));
+//          die;
+//        }
         
          if(!isset($_SESSION['korpa'][$proizvod_id])){
              $this->index();

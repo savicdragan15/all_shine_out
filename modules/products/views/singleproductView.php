@@ -29,16 +29,21 @@
                                     <div class="span4">
                                         <div class="product-detail">
                                             <h4><?=$product->product_name?></h4>
-                                            <span><?=$product->product_price?> €</span>
+                                            <span id="product-price"><?=$product->product_price?> €</span>
                                             <p><?=$product->product_description?></p>
                                         </div>
+                                         
                                         <div class="product-type clearfix">
-                                            <div>
-                                                <label>Select Size</label>
-                                                <select>
-                                                    <option>XXS</option>
-                                                </select>
-                                            </div>
+                                            <?php if(isset($product->units)){?>
+                                                <div>
+                                                    <label >Select Size</label>
+                                                    <select id="product-units">
+                                                       <?php foreach($product->units as $unit){?>
+                                                        <option data-price="<?=$unit->price?>" value="<?=$unit->ID?>"><?=$unit->quantity.' '.$unit->unit_name?></option>
+                                                       <?php } ?>
+                                                    </select>
+                                                </div>
+                                            <?php } ?>
                                           <!-- ovde cemo iz baze dobavljati kolicinu proci kroz foreach i selectovati broj proizvoda iz korpe-->
                                             <div>
                                                 <label>Quantity</label>
@@ -59,15 +64,31 @@
                                                        var quantity = $(this).val(); 
                                                        $('.add-to-cart-single-page').attr('data-quantity', quantity);
                                                     });
+                                                    
+                                                    <?php if(isset($product->units)) { ?>
+                                                        $('#product-units').on('change', function(){
+                                                           var quantity = $(this).val(); 
+                                                           $('.add-to-cart-single-page').attr('data-unit-id', quantity);
+                                                            $('.add-to-cart-single-page').attr('data-price', $('#product-units option:selected').attr('data-price'));
+                                                           $('#product-price').html($('#product-units option:selected').attr('data-price')+' €');
+                                                        });
+                                                    
+                                                        var quantity = $('#product-units').val(); 
+                                                        $('.add-to-cart-single-page').attr('data-unit-id', quantity);
+                                                        $('#product-price').html($('#product-units option:selected').prop("selected", false).attr('data-price')+' €');
+                                                        
+                                                        var price = $('#product-units option:selected').attr('data-price');
+                                                        $('.add-to-cart-single-page').attr('data-price', price);
+                                                    <?php } ?>
                                                 };
                                               
                                             </script>
-                                            <div class="color">
+<!--                                            <div class="color">
                                                 <label>Color</label>
                                                 <select>
                                                     <option>Dark Blue</option>
                                                 </select>
-                                            </div>
+                                            </div>-->
                                         </div>
                                         <div class="buttons">
 <!--                                            <a href="#" class="wish big-button">Add to Wishlist</a>-->

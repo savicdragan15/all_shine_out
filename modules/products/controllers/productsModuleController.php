@@ -13,7 +13,7 @@ class productsModuleController extends baseController
       Loader::loadModel($this, "navigation");
       $this->productsModel = $this->models['products'];
       $this->navigationModel = $this->models['navigation'];
-      $this->_callMdl('unitsproducts', 'products');
+      $this->_callMdl('units', 'products');
     }
     /**
      * 
@@ -171,9 +171,19 @@ class productsModuleController extends baseController
             $this->redirect(_WEB_PATH."home/page404");
             die;
         }
-            
+        if($product->product_units != 'null'){
+            foreach(json_decode($product->product_units) as $unit){
+                   $product->units[] = $this->_unitsMdl->getUnit($unit->unit_id);
+                   foreach($product->units as $quantity){
+                       if($quantity->ID == $unit->unit_id){
+                           $quantity->quantity = $unit->quantity;
+                           $quantity->price = $unit->price;
+                       }
+                   }
+               }
+        }
         $this->template['product'] = $product;
-        
+        //var_dump($product); die;
         Loader::loadView('singleProduct', 'products', FALSE, $this->template);
     }
     
@@ -182,10 +192,25 @@ class productsModuleController extends baseController
        
          foreach ($latestProducts as $product){
             $product->product_name_url = $this->url_friendly($product->product_name);
-            $product->units_product = $this->_unitsproductsMdl->getProductsWithUnit($product->ID);
+            if($product->product_units != 'null'){
+               foreach(json_decode($product->product_units) as $unit){
+                   $product->units[] = $this->_unitsMdl->getUnit($unit->unit_id);
+                   foreach($product->units as $quantity){
+                       if($quantity->ID == $unit->unit_id){
+                           $quantity->quantity = $unit->quantity;
+                       }
+                   }
+               }
+            }
         }
+      
         $this->template['latestProducts'] = $latestProducts;
-        //var_dump($latestProducts); die;
+//        $units = array(
+//            array('unit_id' => 1, 'quantity' => 200),
+//            array('unit_id' => 2,  'quantity' => 2)
+//        );
+//        echo json_encode($units); die;
+       // var_dump($latestProducts); die;
         Loader::loadView("index","",false,$this->template);
     }
     
