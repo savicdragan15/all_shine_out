@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 27, 2017 at 05:41 PM
+-- Generation Time: Feb 15, 2017 at 03:31 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -140,7 +140,10 @@ INSERT INTO `images` (`ID`, `product_id`, `image_name`) VALUES
 (19, NULL, '588922181f9782017-01-25.jpg'),
 (20, NULL, '5889228563b502017-01-25.jpg'),
 (21, NULL, '588922d1b34c02017-01-25.jpg'),
-(22, 11, '58892319aded02017-01-25.jpg');
+(22, 11, '58892319aded02017-01-25.jpg'),
+(23, 12, '58a46c4023bed2017-02-15.jpg'),
+(24, 13, '58a46f3b1130d2017-02-15.jpg'),
+(25, 14, '58a4703d5c62d2017-02-15.jpg');
 
 -- --------------------------------------------------------
 
@@ -315,7 +318,10 @@ INSERT INTO `products` (`ID`, `product_name`, `product_description`, `product_pr
 (8, 'eeee', '<p>dsasa</p>\n<p>s</p>\n<p>da</p>\n<p>as</p>\n<p>sad</p>', '3.50', 10, 14, 15, 0, 1),
 (9, 'probica filtera stringa ok ok', '<p><strong>sadsadsa</strong></p>\n<p><em>sadsa</em></p>\n<p>sad</p>\n<p>&nbsp;"sad"</p>', '3.50', 10, 14, 15, 0, 1),
 (10, 'Testic123', '<p>testic <strong>sadsadasdsad</strong></p>', '500.00', 1, 14, 15, 0, 1),
-(11, 'eee', '<p>eee</p>', '10.00', 10, 1, 3, 0, 0);
+(11, 'eee', '<p>eee</p>', '10.00', 10, 1, 3, 0, 0),
+(12, 'test proizvod', '<p>sadsadsada</p>', '5.00', 10, 1, 2, 0, 1),
+(13, 'eee', '<p>eee breee</p>', '5.00', 10, 1, 2, 0, 1),
+(14, 'celavi', '<p>asdsadsa</p>', '50.00', 10, 1, 4, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -474,7 +480,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`ID`, `first_name`, `last_name`, `email`, `password`, `company`, `salt`, `city`, `country`, `address`, `telephone`, `zip`, `active`, `status`, `last_login`) VALUES
 (11, 'Goran', 'Mladenovic', 'savicdragan15@facebook.com', '$2y$12$gAFPfixVUWKUSlUIYXAleOlwIE6JNNy7TyLsy0jlK3XdovseZWDzS', '', '4rmCugjw3oEDTlw8SPGd5N65f129db2558e4312021dfa4c19c4186', '', '', '', '', '', 1, 2, '2016-12-16 21:09:26'),
 (28, 'Dragan', 'Savic', 'dtest2707@gmail.com', '$2y$12$N0tlTkdYQUomdnU5a0xZYemL0nfNyFEr/GDVKmMck9Ft6zaUbl3iu', '', 'E7HC61UpX6FkSglnpY4aYnbd7476742644c5931f9bad3470e3f0b2', 'Beograd', 'Austria', 'Kumanovska 13', '381637625902', '11000', 1, 2, '2017-01-15 13:20:59'),
-(14, '', '', 'dragan@mediaworks.io', '$2y$12$NnlCQWRvMUlaVzdNb3FCd.1zcM5EqFMaH6JSwTCD7DqQyREClx3Tm', '', 'TIlqD9L13kOM4AL09Jxrcacfdbb05da5a51648b0fe8d22b9c464b8', '', '', '', '', '', 1, 1, '2017-01-25 21:49:00'),
+(14, '', '', 'dragan@mediaworks.io', '$2y$12$NnlCQWRvMUlaVzdNb3FCd.1zcM5EqFMaH6JSwTCD7DqQyREClx3Tm', '', 'TIlqD9L13kOM4AL09Jxrcacfdbb05da5a51648b0fe8d22b9c464b8', '', '', '', '', '', 1, 1, '2017-02-15 14:56:52'),
 (20, '', '', '', '$2y$12$hGxAd706JmLOpjbsxs03LuqI0BWd.yYmuZpf9./WmhE7nawnLy9TG', '', 'G4UiyqtiEgCwrNdmYJ0SbUe86a11db17866d9911b8eea2bf28c293', '', '', '', '', '', 0, 2, '2016-12-16 21:09:26'),
 (21, 'Dragan', 'Testerko', 'savicdragan@gmail.com', '$2y$12$aFdkJThnSkpWQnJaYmlHSOhskriMd1GKAb2gYufedQMhk6SFLgQ06', '', 'ZdgF1ihLiAzLrHuU642SXx0484f6cb89422fdf2978b5cf8419e1a5', 'Beograd', 'Austria', 'Kumanovska 13', '381637625902', '11000', 0, 2, '2016-12-16 20:56:12'),
 (22, 'Probica', 'Testerko', 'savicdragan270777777@gmail.com', '$2y$12$Nm0waWxWNEshcW45IzgzTe7tlV0KRvMmdh7qOJQojNg8lsDXwtRVy', '', 'QfdBuYESXXlSXZDXiy6N8da687216de0d86638d0e27fcc9f70d771', 'Beograd', 'Austria', 'Kumanovska 133', '381637625902', '11000', 0, 2, '2016-12-16 20:58:08'),
@@ -570,7 +576,7 @@ ALTER TABLE `datatables_demo`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `navigation`
 --
@@ -590,7 +596,7 @@ ALTER TABLE `payment_methods`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `shipping_methods`
 --
