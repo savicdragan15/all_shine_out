@@ -87,4 +87,48 @@ class Navigation extends baseController{
            return $string;
            
         }
+        
+        public function renderFooterNav(){
+            $navigationModel = $this->models['navigation'];
+            $parents = $navigationModel->getAll('*', 'WHERE parent = 1 order by sort asc');
+            
+            $parent = $navigationModel->getAll('*', 'WHERE id_parent = 1 LIMIT 5');
+            $string = '<div class="span3">
+                    <div class="widget">
+                        <h3>Exterior</h3>
+                        <ul>';
+                    foreach ($parent as $key => $cat){
+                           $string .='<a <a href="'._WEB_PATH."products/allProductsBySubCategory/".$cat->ID."/".$cat->id_parent."/1/".$this->url_friendly($cat->name).'"><li>'.$cat->name.'</li></a>';
+                     }    
+                  $string .=' </ul>
+                    </div>
+                </div>';
+            
+                  $parent1 = $navigationModel->getAll('*', 'WHERE id_parent = 14 LIMIT 5');
+                   $string .= '<div class="span3">
+                    <div class="widget">
+                        <h3>Interior</h3>
+                        <ul>';
+                    foreach ($parent1 as $key => $cat){
+                           $string .='<a href="'._WEB_PATH."products/allProductsBySubCategory/".$cat->ID."/".$cat->id_parent."/1/".$this->url_friendly($cat->name).'"><li>'.$cat->name.'</li></a>';
+                     }    
+                  $string .=' </ul>
+                    </div>
+                </div>';
+               
+                  $parent2 = $navigationModel->getAll('*', 'WHERE id_parent = 21 LIMIT 5');
+                   $string .= '<div class="span3">
+                    <div class="widget">
+                        <h3>Zubehör</h3>
+                        <ul>';
+                    foreach ($parent2 as $key => $cat){
+                           $string .='<a href="'._WEB_PATH."products/allProductsBySubCategory/".$cat->ID."/".$cat->id_parent."/1/".$this->url_friendly($cat->name).'"><li>'.$cat->name.'</li></a>';
+                     }    
+                  $string .=' </ul>
+                    </div>
+                </div>';
+            
+            return $string;
+            
+        }
 }

@@ -24,7 +24,7 @@ class productsModel extends baseModel{
         $this->limit = $limit;
         $this->offset = $offset;
         $this->where = "products.product_category='{$id}' and products.product_status = 1";
-
+        $this->orderBy = "products.ID DESC";
         return $this->join();
     }
     public function getProductsBySubCategory($id,$idcat, $limit, $offset){

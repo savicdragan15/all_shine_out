@@ -1,6 +1,6 @@
 
 <!-- FOOTER -->
-                <div class="shipping-wrap">
+<!--                <div class="shipping-wrap">
                     <div class="container">
                         <div class="row">
                             <div class="span12">
@@ -11,16 +11,16 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
 
                 <div class="footer-wrap">
                     <div class="container">
                         <div class="row">
 
                             <div class="footer clearfix">
-
-                                <div class="span3">
-                                    <div class="widget">
+                                <?php echo $navigation->renderFooterNav(); ?>
+<!--                               <div class="span3">-->
+<!--                                    <div class="widget">
                                         <h3>Customer Service</h3>
                                         <ul>
                                             <li><a href="#">About Us</a></li>
@@ -28,11 +28,11 @@
                                             <li><a href="#">Privacy Policy</a></li>
                                             <li><a href="#">Terms & Conditions</a></li>
                                         </ul>
-                                    </div>
-                                </div>
+                                    </div>-->
+<!--                               </div>-->
 
-                                <div class="span3">
-                                    <div class="widget">
+<!--                                <div class="span3">-->
+<!--                                    <div class="widget">
                                         <h3>Information</h3>
                                         <ul>
                                             <li><a href="#">About Us</a></li>
@@ -40,11 +40,11 @@
                                             <li><a href="#">Privacy Policy</a></li>
                                             <li><a href="#">Terms & Conditions</a></li>
                                         </ul>
-                                    </div>
-                                </div>
+                                    </div>-->
+<!--                                </div>-->
 
-                                <div class="span3">
-                                    <div class="widget">
+<!--                               <div class="span3">-->
+<!--                                    <div class="widget">
                                         <h3>My Account</h3>
                                         <ul>
                                             <li><a href="#">My Account</a></li>
@@ -52,16 +52,15 @@
                                             <li><a href="#">Wish List</a></li>
                                             <li><a href="#">Newsletter</a></li>
                                         </ul>
-                                    </div>
-                                </div>
-
+                                    </div>-->
+<!--                              </div>-->
                                 <div class="span3">
                                     <div class="widget">
                                         <h3>Contact us</h3>
                                         <ul>
-                                            <li>support@maxshop.com</li>
-                                            <li>+38649 123 456 789 00</li>
-                                            <li>Lorem ipsum address street no 24 b41</li>
+                                            <li>office@alloutshine.at</li>
+                                            <li>+6763077629 und +6767416608</li>
+                                            <li>Ullmannstrasse 65/4, 1150 Vienna, Austria</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -72,18 +71,18 @@
                         <div class="row">
                             <footer class="clearfix">
                                 <div class="span5">
-                                    <p>© 2013 Maxshop Design, All Rights Reserved</p>
+                                    <p>© <?=date('Y')?> All Rights Reserved</p>
                                 </div>
                                 <div class="span2 back-top">
                                     <a href="#"> <img src="<?=_WEB_PATH?>/views/images/back.png" alt=""></a>
                                 </div>
                                 <div class="span5">
                                     <div class="social-icon">
-                                        <a class="rss" href=""></a>
-                                        <a class="twet" href=""></a>
-                                        <a class="fb" href=""></a>
-                                        <a class="google" href=""></a>
-                                        <a class="pin" href=""> </a>
+<!--                                        <a class="rss" href=""></a>
+                                        <a class="twet" href=""></a>-->
+                                        <a class="fb" target="_blank" href="https://www.facebook.com/All-Out-Shine-1800540680229883/"></a>
+<!--                                        <a class="google" href=""></a>
+                                        <a class="pin" href=""> </a>-->
                                     </div>
                                 </div>
                             </footer>

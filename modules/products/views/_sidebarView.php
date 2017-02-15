@@ -7,7 +7,7 @@
 
                                     </div>
 
-                                    <div class="widget">
+<!--                                    <div class="widget">
                                         <h4>Price Filter</h4>
                                         <div class="price-range">
                                             <div id="slider-range"></div>
@@ -16,9 +16,9 @@
                                                 <input type="text" id="amount2" />
                                             </p>
                                         </div>
-                                    </div>
+                                    </div>-->
 
-                                    <div class="widget">
+<!--                                    <div class="widget">
                                         <h4>Featured Products</h4>
 
                                         <div class="featured">
@@ -55,4 +55,4 @@
                                             </ul>
                                         </div>
 
-                                    </div>
+                                    </div>-->

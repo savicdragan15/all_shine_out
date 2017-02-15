@@ -155,7 +155,7 @@
                 <!-- PRODUCT-OFFER -->
                 
                 <!-- CLIENTS -->
-                <div class="clients-wrap">
+<!--                <div class="clients-wrap">
                     <div class="container">
                         <div class="row heading-wrap">
                             <div class="span12 heading">
@@ -182,11 +182,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <!-- CLIENTS -->
                 
                 <!-- CATEGORIES -->
-                <div class="categories-wrap">
+<!--                <div class="categories-wrap">
                     <div class="container">
                         <div class="row">
 
@@ -225,5 +225,5 @@
 
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <!-- CATEGORIES -->

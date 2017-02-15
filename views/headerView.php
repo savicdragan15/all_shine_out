@@ -57,7 +57,7 @@
                                             <?php  } ?>  
                                         </li>
                                         
-                                        <li><a href="#" class="wish">Wish List</a></li>
+<!--                                        <li><a href="#" class="wish">Wish List</a></li>-->
                                         <li>
                                          <?php if(User::isLogin()){ ?>
                                             <a href="<?=_WEB_PATH.'payment/index/1'?>" class="check">Checkout</a>
