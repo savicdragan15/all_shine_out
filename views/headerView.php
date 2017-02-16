@@ -112,7 +112,12 @@
                                     window.onload=function(){
                                         $("#searchBtn").click(function(e){
                                         e.preventDefault();
-                                       // alert("123");
+                                       
+                                       if($("#searchTerm").val() == ''){
+                                           alert('Upisite pojam za pretragu');
+                                           return;
+                                       }
+                                       
                                        $("#searchFrm").attr("action",'<?=_WEB_PATH."products/searchProducts/"?>'+$("#searchTerm").val()+'/1');
                                       document.getElementById("searchFrm").submit();
                                     });
