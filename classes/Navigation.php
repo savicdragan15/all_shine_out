@@ -90,44 +90,22 @@ class Navigation extends baseController{
         
         public function renderFooterNav(){
             $navigationModel = $this->models['navigation'];
-            $parents = $navigationModel->getAll('*', 'WHERE parent = 1 order by sort asc');
+            $parents = $navigationModel->getAll('*', 'WHERE parent = 1 and has_subcategory = 1 order by rand() LIMIT 3');
             
-            $parent = $navigationModel->getAll('*', 'WHERE id_parent = 1 LIMIT 5');
-            $string = '<div class="span3">
+            $string = "";
+            foreach ($parents as $parent){
+                $string .= '<div class="span3">
                     <div class="widget">
-                        <h3>Exterior</h3>
+                        <h3>'.$parent->name.'</h3>
                         <ul>';
+                    $parent = $navigationModel->getAll('*', 'WHERE id_parent ='.$parent->ID.' order by rand() LIMIT 5');
                     foreach ($parent as $key => $cat){
                            $string .='<a <a href="'._WEB_PATH."products/allProductsBySubCategory/".$cat->ID."/".$cat->id_parent."/1/".$this->url_friendly($cat->name).'"><li>'.$cat->name.'</li></a>';
                      }    
                   $string .=' </ul>
                     </div>
                 </div>';
-            
-                  $parent1 = $navigationModel->getAll('*', 'WHERE id_parent = 14 LIMIT 5');
-                   $string .= '<div class="span3">
-                    <div class="widget">
-                        <h3>Interior</h3>
-                        <ul>';
-                    foreach ($parent1 as $key => $cat){
-                           $string .='<a href="'._WEB_PATH."products/allProductsBySubCategory/".$cat->ID."/".$cat->id_parent."/1/".$this->url_friendly($cat->name).'"><li>'.$cat->name.'</li></a>';
-                     }    
-                  $string .=' </ul>
-                    </div>
-                </div>';
-               
-                  $parent2 = $navigationModel->getAll('*', 'WHERE id_parent = 21 LIMIT 5');
-                   $string .= '<div class="span3">
-                    <div class="widget">
-                        <h3>Zubehör</h3>
-                        <ul>';
-                    foreach ($parent2 as $key => $cat){
-                           $string .='<a href="'._WEB_PATH."products/allProductsBySubCategory/".$cat->ID."/".$cat->id_parent."/1/".$this->url_friendly($cat->name).'"><li>'.$cat->name.'</li></a>';
-                     }    
-                  $string .=' </ul>
-                    </div>
-                </div>';
-            
+            }
             return $string;
             
         }

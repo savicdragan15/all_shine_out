@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2017 at 03:31 PM
+-- Generation Time: Feb 16, 2017 at 12:51 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -143,7 +143,8 @@ INSERT INTO `images` (`ID`, `product_id`, `image_name`) VALUES
 (22, 11, '58892319aded02017-01-25.jpg'),
 (23, 12, '58a46c4023bed2017-02-15.jpg'),
 (24, 13, '58a46f3b1130d2017-02-15.jpg'),
-(25, 14, '58a4703d5c62d2017-02-15.jpg');
+(25, 14, '58a4703d5c62d2017-02-15.jpg'),
+(26, 15, '583de7f92c8802016-11-29.jpg');
 
 -- --------------------------------------------------------
 
@@ -155,6 +156,7 @@ CREATE TABLE `navigation` (
   `ID` int(10) UNSIGNED NOT NULL,
   `name` varchar(250) NOT NULL,
   `link` varchar(250) NOT NULL,
+  `has_subcategory` tinyint(4) NOT NULL DEFAULT '0',
   `sort` int(10) UNSIGNED NOT NULL,
   `parent` int(11) NOT NULL DEFAULT '0',
   `subparent` tinyint(1) NOT NULL DEFAULT '0',
@@ -166,44 +168,44 @@ CREATE TABLE `navigation` (
 -- Dumping data for table `navigation`
 --
 
-INSERT INTO `navigation` (`ID`, `name`, `link`, `sort`, `parent`, `subparent`, `id_parent`, `id_subparent`) VALUES
-(1, 'Exterior', '', 1, 1, 0, 0, 0),
-(2, 'Wäsche', '', 1, 0, 0, 1, 0),
-(3, 'Versiegelungen', '', 2, 0, 0, 1, 0),
-(4, 'Felgen & Reifen', '', 3, 0, 0, 1, 0),
-(5, 'Reiniger', '', 4, 0, 0, 1, 0),
-(6, 'Wachse', '', 5, 0, 0, 1, 0),
-(7, 'Glas', '', 6, 0, 0, 1, 0),
-(8, 'Lackreinigung', '', 7, 0, 0, 1, 0),
-(9, 'Quick Detailer', '', 8, 0, 0, 1, 0),
-(10, 'Metall', '', 9, 0, 0, 1, 0),
-(11, 'Polituren', '', 10, 0, 0, 1, 0),
-(12, 'Kunststoff & Gummi', '', 11, 0, 0, 1, 0),
-(13, 'Verdeck', '', 12, 0, 0, 1, 0),
-(14, 'Interior', '', 2, 1, 0, 0, 0),
-(15, 'Kunststoff', '', 1, 0, 0, 14, 0),
-(16, 'Lufterfrischer', '', 2, 0, 0, 14, 0),
-(17, 'Stoff', '', 3, 0, 0, 14, 0),
-(18, 'Leder', '', 4, 0, 0, 14, 0),
-(19, 'Glas', '', 5, 0, 0, 14, 0),
-(20, 'Microfaser', '', 3, 1, 0, 0, 0),
-(21, 'Zubehör', '', 4, 1, 0, 0, 0),
-(22, 'Applikatoren', '', 1, 0, 0, 21, 0),
-(23, 'Bürsten', '', 2, 0, 0, 21, 0),
-(24, 'Schwämme', '', 3, 0, 0, 21, 0),
-(25, 'Aufbewahrung', '', 4, 0, 0, 21, 0),
-(26, 'Polier-Pads', '', 5, 0, 0, 21, 0),
-(27, 'Sprühflaschen', '', 6, 0, 0, 21, 0),
-(28, 'Misc', '', 5, 0, 0, 21, 0),
-(29, 'Maschinen', '', 6, 0, 1, 21, 0),
-(30, 'Poliermaschinen', '', 1, 0, 0, 21, 29),
-(31, 'Sauger', '', 2, 0, 0, 21, 29),
-(32, 'Akku-Schrauber', '', 3, 0, 0, 21, 29),
-(33, 'Schleifen', '', 4, 0, 0, 21, 29),
-(34, 'Sets', '', 5, 1, 0, 0, 0),
-(35, 'Merchandise', '', 6, 1, 0, 0, 0),
-(36, 'Gutscheine', '', 7, 1, 0, 0, 0),
-(37, 'Hautschutz', '', 8, 1, 0, 0, 0);
+INSERT INTO `navigation` (`ID`, `name`, `link`, `has_subcategory`, `sort`, `parent`, `subparent`, `id_parent`, `id_subparent`) VALUES
+(1, 'Exterior', '', 1, 1, 1, 0, 0, 0),
+(2, 'Wäsche', '', 0, 1, 0, 0, 1, 0),
+(3, 'Versiegelungen', '', 0, 2, 0, 0, 1, 0),
+(4, 'Felgen & Reifen', '', 0, 3, 0, 0, 1, 0),
+(5, 'Reiniger', '', 0, 4, 0, 0, 1, 0),
+(6, 'Wachse', '', 0, 5, 0, 0, 1, 0),
+(7, 'Glas', '', 0, 6, 0, 0, 1, 0),
+(8, 'Lackreinigung', '', 0, 7, 0, 0, 1, 0),
+(9, 'Quick Detailer', '', 0, 8, 0, 0, 1, 0),
+(10, 'Metall', '', 0, 9, 0, 0, 1, 0),
+(11, 'Polituren', '', 0, 10, 0, 0, 1, 0),
+(12, 'Kunststoff & Gummi', '', 0, 11, 0, 0, 1, 0),
+(13, 'Verdeck', '', 0, 12, 0, 0, 1, 0),
+(14, 'Interior', '', 1, 2, 1, 0, 0, 0),
+(15, 'Kunststoff', '', 0, 1, 0, 0, 14, 0),
+(16, 'Lufterfrischer', '', 0, 2, 0, 0, 14, 0),
+(17, 'Stoff', '', 0, 3, 0, 0, 14, 0),
+(18, 'Leder', '', 0, 4, 0, 0, 14, 0),
+(19, 'Glas', '', 0, 5, 0, 0, 14, 0),
+(20, 'Microfaser', '', 0, 3, 1, 0, 0, 0),
+(21, 'Zubehör', '', 1, 4, 1, 0, 0, 0),
+(22, 'Applikatoren', '', 0, 1, 0, 0, 21, 0),
+(23, 'Bürsten', '', 0, 2, 0, 0, 21, 0),
+(24, 'Schwämme', '', 0, 3, 0, 0, 21, 0),
+(25, 'Aufbewahrung', '', 0, 4, 0, 0, 21, 0),
+(26, 'Polier-Pads', '', 0, 5, 0, 0, 21, 0),
+(27, 'Sprühflaschen', '', 0, 6, 0, 0, 21, 0),
+(28, 'Misc', '', 0, 5, 0, 0, 21, 0),
+(29, 'Maschinen', '', 1, 6, 0, 1, 21, 0),
+(30, 'Poliermaschinen', '', 0, 1, 0, 0, 21, 29),
+(31, 'Sauger', '', 0, 2, 0, 0, 21, 29),
+(32, 'Akku-Schrauber', '', 0, 3, 0, 0, 21, 29),
+(33, 'Schleifen', '', 0, 4, 0, 0, 21, 29),
+(34, 'Sets', '', 0, 5, 1, 0, 0, 0),
+(35, 'Merchandise', '', 0, 6, 1, 0, 0, 0),
+(36, 'Gutscheine', '', 0, 7, 1, 0, 0, 0),
+(37, 'Hautschutz', '', 0, 8, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -297,6 +299,7 @@ INSERT INTO `payment_methods` (`ID`, `preview_name`, `name`, `status`) VALUES
 CREATE TABLE `products` (
   `ID` int(10) UNSIGNED NOT NULL,
   `product_name` varchar(250) NOT NULL,
+  `order_name` varchar(255) DEFAULT NULL,
   `product_description` text NOT NULL,
   `product_price` decimal(20,2) NOT NULL,
   `product_quantity` tinyint(4) NOT NULL,
@@ -310,18 +313,19 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`ID`, `product_name`, `product_description`, `product_price`, `product_quantity`, `product_category`, `product_subcategory`, `product_sub_subcategory`, `product_status`) VALUES
-(1, '3', '&#60;p&#62;&#38;lt;p&#38;gt;3M - Car Wash Soap&#38;lt;/p&#38;gt;&#60;/p&#62;', '12.92', 10, 1, 2, 0, 1),
-(2, 'Auto Finesse - Avalanche', '<h1 class="fn product-title">Auto Finesse - Avalanche</h1>', '20.00', 10, 1, 2, 0, 1),
-(3, 'proba123', '&#60;p&#62;&#38;lt;p&#38;gt;proba&#38;lt;/p&#38;gt;&#60;/p&#62;', '100.00', 10, 1, 2, 0, 1),
-(7, 'proba12377777', '&#60;p&#62;&#38;lt;p&#38;gt;proba&#38;lt;/p&#38;gt;&#60;/p&#62;', '100.00', 10, 1, 2, 0, 1),
-(8, 'eeee', '<p>dsasa</p>\n<p>s</p>\n<p>da</p>\n<p>as</p>\n<p>sad</p>', '3.50', 10, 14, 15, 0, 1),
-(9, 'probica filtera stringa ok ok', '<p><strong>sadsadsa</strong></p>\n<p><em>sadsa</em></p>\n<p>sad</p>\n<p>&nbsp;"sad"</p>', '3.50', 10, 14, 15, 0, 1),
-(10, 'Testic123', '<p>testic <strong>sadsadasdsad</strong></p>', '500.00', 1, 14, 15, 0, 1),
-(11, 'eee', '<p>eee</p>', '10.00', 10, 1, 3, 0, 0),
-(12, 'test proizvod', '<p>sadsadsada</p>', '5.00', 10, 1, 2, 0, 1),
-(13, 'eee', '<p>eee breee</p>', '5.00', 10, 1, 2, 0, 1),
-(14, 'celavi', '<p>asdsadsa</p>', '50.00', 10, 1, 4, 0, 1);
+INSERT INTO `products` (`ID`, `product_name`, `order_name`, `product_description`, `product_price`, `product_quantity`, `product_category`, `product_subcategory`, `product_sub_subcategory`, `product_status`) VALUES
+(1, '3', NULL, '&#60;p&#62;&#38;lt;p&#38;gt;3M - Car Wash Soap&#38;lt;/p&#38;gt;&#60;/p&#62;', '12.92', 10, 1, 2, 0, 1),
+(2, 'Auto Finesse - Avalanche', NULL, '<h1 class="fn product-title">Auto Finesse - Avalanche</h1>', '20.00', 10, 1, 2, 0, 1),
+(3, 'proba123', NULL, '&#60;p&#62;&#38;lt;p&#38;gt;proba&#38;lt;/p&#38;gt;&#60;/p&#62;', '100.00', 10, 1, 2, 0, 1),
+(7, 'proba12377777', NULL, '&#60;p&#62;&#38;lt;p&#38;gt;proba&#38;lt;/p&#38;gt;&#60;/p&#62;', '100.00', 10, 1, 2, 0, 1),
+(8, 'eeee', NULL, '<p>dsasa</p>\n<p>s</p>\n<p>da</p>\n<p>as</p>\n<p>sad</p>', '3.50', 10, 14, 15, 0, 1),
+(9, 'probica filtera stringa ok ok 100ml', 'probica filtera stringa ok ok 100ml', '<p><strong>sadsadsa</strong></p>\n<p><em>sadsa</em></p>\n<p>sad</p>\n<p>&nbsp;"sad"</p>', '3.50', 10, 14, 15, 0, 1),
+(10, 'Testic123', NULL, '<p>testic <strong>sadsadasdsad</strong></p>', '500.00', 1, 14, 15, 0, 1),
+(11, 'eee', NULL, '<p>eee</p>', '10.00', 10, 1, 3, 0, 0),
+(12, 'test proizvod', NULL, '<p>sadsadsada</p>', '5.00', 10, 1, 2, 0, 1),
+(13, 'eee', NULL, '<p>eee breee</p>', '5.00', 10, 1, 2, 0, 1),
+(14, 'celavi', NULL, '<p>asdsadsa</p>', '50.00', 10, 1, 4, 0, 1),
+(15, 'probica filtera stringa ok ok 500ml', 'probica filtera stringa ok ok 500ml', '<p><strong>sadsadsa</strong></p>\r\n<p><em>sadsa</em></p>\r\n<p>sad</p>\r\n<p>&nbsp;"sad"</p>', '3.50', 10, 14, 15, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -484,7 +488,7 @@ INSERT INTO `users` (`ID`, `first_name`, `last_name`, `email`, `password`, `comp
 (20, '', '', '', '$2y$12$hGxAd706JmLOpjbsxs03LuqI0BWd.yYmuZpf9./WmhE7nawnLy9TG', '', 'G4UiyqtiEgCwrNdmYJ0SbUe86a11db17866d9911b8eea2bf28c293', '', '', '', '', '', 0, 2, '2016-12-16 21:09:26'),
 (21, 'Dragan', 'Testerko', 'savicdragan@gmail.com', '$2y$12$aFdkJThnSkpWQnJaYmlHSOhskriMd1GKAb2gYufedQMhk6SFLgQ06', '', 'ZdgF1ihLiAzLrHuU642SXx0484f6cb89422fdf2978b5cf8419e1a5', 'Beograd', 'Austria', 'Kumanovska 13', '381637625902', '11000', 0, 2, '2016-12-16 20:56:12'),
 (22, 'Probica', 'Testerko', 'savicdragan270777777@gmail.com', '$2y$12$Nm0waWxWNEshcW45IzgzTe7tlV0KRvMmdh7qOJQojNg8lsDXwtRVy', '', 'QfdBuYESXXlSXZDXiy6N8da687216de0d86638d0e27fcc9f70d771', 'Beograd', 'Austria', 'Kumanovska 133', '381637625902', '11000', 0, 2, '2016-12-16 20:58:08'),
-(1, 'Dragan', 'Savic', 'savicdragan2707@gmail.com', '$2y$12$I00zZEBUP2pVcGl0QlgmWOqn9gozOjKOvmXfyQ0kWrEV7uORWSHs6', '', 'bq0eGkU58WR9E9HdhM4qQsbe28e95f8cc551c53557cc2a8061bc78', 'Beograd', 'Austria', 'Kumanovska 13', '381637625902', '11000', 1, 2, '2017-01-23 20:50:24');
+(1, 'Dragan', 'Savic', 'savicdragan2707@gmail.com', '$2y$12$I00zZEBUP2pVcGl0QlgmWOqn9gozOjKOvmXfyQ0kWrEV7uORWSHs6', '', 'bq0eGkU58WR9E9HdhM4qQsbe28e95f8cc551c53557cc2a8061bc78', 'Beograd', 'Austria', 'Kumanovska 13', '381637625902', '11000', 1, 2, '2017-02-15 17:22:46');
 
 --
 -- Indexes for dumped tables
@@ -576,7 +580,7 @@ ALTER TABLE `datatables_demo`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `navigation`
 --
@@ -596,7 +600,7 @@ ALTER TABLE `payment_methods`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `shipping_methods`
 --
