@@ -138,13 +138,17 @@
                     <div class="container">
                         <div class="row">
                             <div class="span12">
+                               
                             <nav class="desktop-nav">
                                 <ul class="clearfix">
                                     <?php $navigation = new Navigation(); echo $navigation->renderNav();?>
+                                    
                                 </ul>
                             </nav>
-                                <select>
-                                    <?php echo $navigation->renderCategory()?>
+                                
+                                <select onchange="if(this.value!=='0'){window.location='<?php echo _WEB_PATH;?>'+'products/allProductsByCategory/'+this.value}">
+                                    <option value='0'>Menu</option>
+                                    <?php echo $navigation->renderCategory($category_id)?>
                                 </select>
                             </div>
                         </div>

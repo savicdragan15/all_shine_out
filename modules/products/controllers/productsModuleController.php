@@ -171,7 +171,7 @@ class productsModuleController extends baseController
         $searchTerm = $this->filter_input($searchTerm);
         
         $nubmerOfRecords = $this->productsModel->getNumberOfRecordsSearch($searchTerm);
-        $pagination = new Pagination($nubmerOfRecords, $page, 1 ,2);
+        $pagination = new Pagination($nubmerOfRecords, $page, 9 ,2);
         $offset = $pagination->offset();
         $limit = $pagination->limit();
         

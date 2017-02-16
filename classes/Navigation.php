@@ -49,14 +49,21 @@ class Navigation extends baseController{
              return $string;
         }
     
-        public function renderCategory(){
+        public function renderCategory($category_id){
+            
             $navigationModel = $this->models['navigation'];
             
             $categories = $navigationModel->getAll('*','WHERE parent=1');
             $string = '';
             foreach($categories as $category){
-                $string.= "<option>{$category->name}</option>";
-            }
+               $name_cat=$this->url_friendly($category->name); 
+            
+                if($category_id==$category->ID)
+                $string.= "<option value='{$category->ID}/1/{$name_cat}' selected>{$category->name}</option>";
+            else
+                $string.= "<option value='{$category->ID}/1/{$name_cat}'>{$category->name}</option>";
+            
+            }   
             return $string;
         }
         public function renderSideBar()
