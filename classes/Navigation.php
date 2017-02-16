@@ -98,8 +98,8 @@ class Navigation extends baseController{
                     <div class="widget">
                         <h3>'.$parent->name.'</h3>
                         <ul>';
-                    $parent = $navigationModel->getAll('*', 'WHERE id_parent ='.$parent->ID.' order by rand() LIMIT 5');
-                    foreach ($parent as $key => $cat){
+                    $child = $navigationModel->getAll('*', 'WHERE id_parent ='.$parent->ID.' order by rand() LIMIT 5');
+                    foreach ($child as $key => $cat){
                            $string .='<a <a href="'._WEB_PATH."products/allProductsBySubCategory/".$cat->ID."/".$cat->id_parent."/1/".$this->url_friendly($cat->name).'"><li>'.$cat->name.'</li></a>';
                      }    
                   $string .=' </ul>
