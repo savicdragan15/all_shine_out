@@ -33,12 +33,12 @@
                                             <p><?=$product->product_description?></p>
                                         </div>
                                         <div class="product-type clearfix">
-                                            <div>
+<!--                                            <div>
                                                 <label>Select Size</label>
                                                 <select>
                                                     <option>XXS</option>
                                                 </select>
-                                            </div>
+                                            </div>-->
                                           <!-- ovde cemo iz baze dobavljati kolicinu proci kroz foreach i selectovati broj proizvoda iz korpe-->
                                             <div>
                                                 <label>Quantity</label>
@@ -62,12 +62,12 @@
                                                 };
                                               
                                             </script>
-                                            <div class="color">
+<!--                                            <div class="color">
                                                 <label>Color</label>
                                                 <select>
                                                     <option>Dark Blue</option>
                                                 </select>
-                                            </div>
+                                            </div>-->
                                         </div>
                                         <div class="buttons">
 <!--                                            <a href="#" class="wish big-button">Add to Wishlist</a>-->
