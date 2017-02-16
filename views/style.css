@@ -193,7 +193,7 @@ header nav > ul > li ul li a{display: block;}
 .heading h2 span { width: 23px;height: 48.4px; display: block;position: absolute; right: -23px; top: -1px; background: url("images/heading-errow.png") no-repeat;}
 
 .product { border: 1px solid #dfdfdf; margin-bottom: 30px;-webkit-transition:  0.5s; -moz-transition:  0.5s; -o-transition: 0.5s; -ms-transition: 0.5s;}
-.product figure { position: relative;width: 270px; height: 300px !important;}
+.product figure { position: relative;width: 260px; height: 300px !important;}
 .product figure > a { width: 270px; height: 250px; }
 /*.product figure > a > img { 
     width: 99%;
@@ -208,7 +208,7 @@ header nav > ul > li ul li a{display: block;}
 .detail { 
 /*        background: #f9f9f9;*/
          text-align: center;
-         border: 1px solid #dfdfdf;
+/*         border: 1px solid #dfdfdf;*/
          border-top: 0px; 
          padding: 10px 0px;;
          -webkit-transition: background-color 0.5s; 
