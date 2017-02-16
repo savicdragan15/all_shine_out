@@ -44,4 +44,8 @@ class productsController extends frontendController{
     public function test() {
         $this->productsModuleController->test();
     }
+    public function searchProducts($searchTerm,$page)
+    {
+        $this->productsModuleController->searchProducts($searchTerm,$page);
+    }
 }

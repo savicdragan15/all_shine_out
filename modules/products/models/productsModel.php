@@ -51,13 +51,28 @@ class productsModel extends baseModel{
 
         return $this->join();
     }
+    public function getProductsBySearchTerm($searchTerm, $offset, $limit){
+        $this->join = array(
+            array("table"=>"images","relation"=>"products.ID = images.product_id")
+        );
+        
+        $this->limit = $limit;
+        $this->offset = $offset;
+        $this->where = "products.product_name LIKE '%{$searchTerm}%' and products.product_status = 1";
+
+        return $this->join();
+    }
     
     public function getNumberOfRecords($category,$id){
         $products = $this->getAll("count(ID) as 'all'", "WHERE {$category}='{$id}' and products.product_status = 1");
         
         return $products[0]->all;
     }
-    
+     public function getNumberOfRecordsSearch($search){
+        $products = $this->getAll("count(ID) as 'all'", "WHERE products.product_name LIKE '%".$search."%' and products.product_status = 1");
+        
+        return $products[0]->all;
+    }
     public function getProduct($id, $status = 1){
         $this->join = array(
             array("table"=>"images","relation"=>"products.ID = images.product_id")

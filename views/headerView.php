@@ -104,10 +104,21 @@
                             </div>
 
                             <div class="span5">
-                                <form>
-                                    <input type="text" placeholder="Type and hit enter">
-                                    <input type="submit" value="">
+                                <form action='' method="GET" id="searchFrm" name='searchFrm'> 
+                                    <input type="text" name="searchTerm" id="searchTerm" placeholder="Type and hit enter">
+                                    <input type="submit" id='searchBtn' value="">
                                 </form>
+                                <script>
+                                    window.onload=function(){
+                                        $("#searchBtn").click(function(e){
+                                        e.preventDefault();
+                                       // alert("123");
+                                       $("#searchFrm").attr("action",'<?=_WEB_PATH."products/searchProducts/"?>'+$("#searchTerm").val()+'/1');
+                                      document.getElementById("searchFrm").submit();
+                                    });
+                                        
+                                    }
+                                </script>
                             </div>
 
                             <div class="span2">

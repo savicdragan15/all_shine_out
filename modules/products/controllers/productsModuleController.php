@@ -161,7 +161,46 @@ class productsModuleController extends baseController
         }
         
     }
-    
+    public function searchProducts($searchTerm,$page)
+    {
+        /*$id = $this->filter_input($id);
+        $idsubcat = $this->filter_input($idsubcat);
+        $idcat = $this->filter_input($idcat);*/
+        
+       // $sub_sub_category_name = $this->navigationModel->getCategoryName($id);
+        $searchTerm = $this->filter_input($searchTerm);
+        
+        $nubmerOfRecords = $this->productsModel->getNumberOfRecordsSearch($searchTerm);
+        $pagination = new Pagination($nubmerOfRecords, $page, 1 ,2);
+        $offset = $pagination->offset();
+        $limit = $pagination->limit();
+        
+        $products = $this->productsModel->getProductsBySearchTerm($searchTerm, $offset, $limit);
+        $pages = $pagination->build(); // Contains associative array with a numbers of a pages
+        /*var_dump($products);
+        die;*/
+        
+        $this->template['products'] = $products;
+        foreach ($products as $product){
+            $product->product_name_url = $this->url_friendly($product->product_name);
+        }
+        $this->template['pagination'] = $pages;
+      //  $this->template['category_name'] = $this->url_friendly($sub_sub_category_name);
+        //$this->template['category_id'] = $id;
+       // $this->template['cat_id'] = $idcat;
+       // $this->template['sub_cat_id'] = $idsubcat;
+        $this->template['limit'] = $limit;
+        $this->template['total'] = $nubmerOfRecords;
+       // $this->template['controllerMethod'] = 'allProductsSubCatChild';
+        $this->template['message'] = 'No search results.';
+        $this->template['searchTerm'] =$searchTerm;
+        
+        
+         
+               Loader::loadView('gridSearch', 'products', FALSE,$this->template);
+           
+        
+    }
     public function singleProduct($id){
         
         $id = $this->filter_input($id);
@@ -182,7 +221,7 @@ class productsModuleController extends baseController
        
          foreach ($latestProducts as $product){
             $product->product_name_url = $this->url_friendly($product->product_name);
-            $product->units_product = $this->_unitsproductsMdl->getProductsWithUnit($product->ID);
+            //$product->units_product = $this->_unitsproductsMdl->getProductsWithUnit($product->ID);
         }
         $this->template['latestProducts'] = $latestProducts;
         //var_dump($latestProducts); die;
