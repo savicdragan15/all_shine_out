@@ -36,6 +36,34 @@
             <!-- Include the HTML5 shiv print polyfill for Internet Explorer browsers 8 and below -->
             <!--[if lt IE 10]><script src="js/html5shiv-printshiv.js" media="all"></script><![endif]-->
     
+     <style>
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+            margin-bottom: 1.5em;
+        }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+        .swiper-pagination-bullet-active {
+            background: #000;
+        }
+    </style>
 		</head>
 		<body>				
                     <!-- HEADER -->
@@ -98,7 +126,7 @@
 
                             <div class="span5">
                                 <div class="logo">
-                                    <a href="<?=_WEB_PATH?>"><img style="width: 128px; height: 68px;" src="<?=_WEB_PATH?>/views/images/1_o.png" alt=""></a>
+                                    <a href="<?=_WEB_PATH?>"><img style="width: 248px; height: 138px;" src="<?=_WEB_PATH?>/views/images/1_o.png" alt=""></a>
                                     <h1><a href="<?=_WEB_PATH?>"><span> All out shine </span></a></h1>
                                 </div>
                             </div>

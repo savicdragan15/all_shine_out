@@ -106,7 +106,7 @@ if (jQuery)(function($) {
 						}).insertAfter(select);
 						// Set label width
 						var labelWidth = control.width() - arrow.outerWidth() - parseInt(label.css('paddingLeft')) - parseInt(label.css('paddingLeft'));
-						label.width(labelWidth);
+						//label.width(labelWidth);
 						disableSelection(control);
 					}
 					// Store data for later use and show the control

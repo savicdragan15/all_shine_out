@@ -27,7 +27,7 @@
                                         </li>
                                         <li><?=number_format($product['proizvod_cena'], 2, '.', '');?> €</li>
                                         <li class="price-product<?=$product['proizvod_id']?>"><?=number_format($product['ukupna_cena'], 2, '.', '');?> €</li>
-                                        <li class="last" >
+                                        <li class="last cart_new_class" >
                                             <a class="remove-from-cart-dialog" id="remove-from-cart-dialog<?=$product['proizvod_id']?>" data-product-id="<?=$product['proizvod_id']?>"  data-product-quantity="<?=$product['proizvod_kolicina']?>" href="#">X</a>
                                         </li>
                                     </ul>
